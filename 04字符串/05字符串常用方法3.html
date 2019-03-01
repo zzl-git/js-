@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	//替换 replace(old,new) 只能替换第一个
+	var str1 = "abcdabc";
+	console.log(str1.replace('a','h'));
+	console.log("-------");
+	//split 将字符串转成数组, 可以加进第二个参数, 表示转成数组长度 
+	var str2 = "2018-12-11-19-00-00";
+	console.log(str2.split('-',3));
+	console.log(str2);
+
+	//concat 连接字符串
+	var str3 = "abcdef";
+	var str4 = "hijklmn";
+	var str5 = "opq";
+	console.log(str3.concat(str4,str5));
+
+	//寻找子字符串第一次的位置 
+	//indexof(寻找的子字符串, 开始的位置)
+	var str6 = "abcdabcd";
+	console.log(str6.indexOf('a'));//0
+
+	console.log(str6.lastIndexOf('h'));
+
+	var str7 = "abcdHIJK";
+	console.log(str7.toLowerCase());//全部小写
+	console.log(str7.toUpperCase());//全部大写
+</script>	
+</body>
+</html>

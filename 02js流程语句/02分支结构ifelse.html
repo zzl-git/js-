@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	// 如果明天下刀子,我们就上课
+	// if(判断条件){
+	// 	执行的语句
+	// }
+    var daozi = 0;
+    if (daozi>0) {
+    	console.log("我们就 上课");
+    }
+
+    // 如果何娟娟这次期末考试考多余250,那么就请我们吃饭,否则就请我们喝可乐
+    // 条件成绩>250,吃饭
+    //        <250  可乐
+    // if(判断条件){
+    // 	满足判断条件执行语句
+    // }else{
+    // 	不满足
+    // }
+    var score = 251;
+    if(score>250){
+    	console.log("请大家去吃饭");
+    }else{
+    	console.log("请大家喝可乐");
+    }
+    console.log("999");
+    // x ,y 如果x大于2,y为3,否则y为0
+    //判断条件 x>2, y=3;y=0
+    var x=10;
+    if(x>2){
+    	y=3;
+    }else{
+    	y=0
+    }
+    console.log(y);
+    // 如果x为3,y为2;否则y为1 
+     // x==3,y=2;y=1 
+    //用户名zhangsan 密码 111 
+    // var name = prompt("请输入姓名");
+    // console.log(name);
+    // console.log(typeof name);
+    // var mima = prompt("请输入密码");
+    // console.log(mima);
+    // console.log(typeof mima);
+    // if(name=="zhangsan"){
+    // 	if (mima=="111") {
+    // 		alert("登录成功");
+    // 	}else{
+    // 		alert("密码错误请重新输入");
+    // 	}
+    // }else{
+    // 	alert("用户名错误");
+    // }
+
+    if(name=="zhangsan"&&mima=="111"){
+    	alert("登录成功")
+    }else if(name=="zhangsan"){
+    	alert("密码错误");
+    }else{
+    	alert("用户名错误");
+    }	
+
+    // 考试成绩 
+    // 85-100 优秀
+    // 70-85  凑合
+    // 60-70  得努力了
+    // 60     太差劲
+    //
+    var chengji = prompt("请输入成绩");
+    // if(chengji>=85&&chengji<=100){
+    // 	alert("优秀");
+    // }else if (chengji>=70&&chengji<85) {
+    // 	alert("凑合");
+    // }else if (chengji>=60&&chengji<70) {
+    // 	alert("得努力了");
+    // }else if(chengji<60&&chengji>=0){
+    // 	alert("太差劲了");
+    // }else {
+    // 	alert("成绩无效");
+    // }
+
+    if(chengji>100){
+    	alert("火星来的");
+    }else if (chengji>85) {
+    	alert("优秀");
+    }else if(chengji>70){
+    	alert("凑合")
+    }else if (chengji>60) {
+    	alert("得努力了");
+    }else if (chengji>0) {
+    	alert("太差劲了");
+    }else{
+    	alert("成绩没有负值");
+    }
+    var a = 200;
+    if (a>100) console.log("111")
+</script>	
+</body>
+</html>

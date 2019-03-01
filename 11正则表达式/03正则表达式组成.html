@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+	//[abc] 查找出现abc中任意一个字符
+	//[^abc] 查找出现非abc中任意一个字符
+	var reg1 = /[^abc]/;
+	console.log(reg1.test("a"));//t
+	console.log(reg1.test("b"));//t
+	console.log(reg1.test("c"));//t
+	console.log(reg1.test("A"));//f
+	console.log(reg1.test("B"));//f
+	console.log(reg1.test("C"));//f
+	console.log(reg1.test("abc"));//t
+	console.log(reg1.test("bac"));//t
+	console.log(reg1.test("cAB"));//t
+	console.log(reg1.test("Aa"));//t
+	console.log(reg1.test("BCDc"));//t
+	console.log(reg1.test("CD"));//f
+	console.log("---------------------");
+	var reg2 = /[^0-9]/;
+	console.log(reg2.test("101"));//t
+	console.log(reg2.test("b2"));//t
+	console.log(reg2.test("c"));//t
+	console.log(reg2.test("A"));//f
+	console.log(reg2.test("B"));//f
+	console.log(reg2.test("C"));//f
+	console.log(reg2.test("a3bc"));//t
+	console.log(reg2.test("bac"));//t
+	console.log(reg2.test("c4AB"));//t
+	console.log(reg2.test("Aa"));//t
+	console.log(reg2.test("BCDc"));//t
+	console.log(reg2.test("CD"));//f
+	console.log("---------------------");
+	var reg3 = /x[abc]y/;
+	console.log(reg3.test("abc"));//f
+	console.log(reg3.test("xy"));//f
+	console.log(reg3.test("xyy"));//f
+	console.log(reg3.test("xzy"));//f
+	console.log(reg3.test("xay"));//f
+
+	console.log("---------------------");
+	//a只要出现1次
+	var reg4 = /a+/;
+	console.log(reg4.test("a"));//t
+	console.log(reg4.test("aa"));//t
+	console.log(reg4.test("aaa"));//t
+	console.log(reg4.test("b"));//f
+	console.log("---------------------");
+	var reg5 = /a?/;
+	console.log(reg5.test("a"));//t
+	console.log(reg5.test("aa"));//t
+	console.log(reg5.test("aaa"));//t
+	console.log(reg5.test("b"));//f
+	console.log("---------------------");
+	//包含2个a
+	var reg6 = /a{2,}/;
+	console.log(reg6.test("a"));//f
+	console.log(reg6.test("aa"));//t
+	console.log(reg6.test("aaa"));//t
+	console.log(reg6.test("b"));//f
+
+	console.log("---------------------");
+	//包含2个a
+	//^开头  $结尾
+	var reg6 = /^a/;
+	console.log(reg6.test("a"));//f
+	console.log(reg6.test("aa"));//t
+	console.log(reg6.test("aaa"));//t
+	console.log(reg6.test("b"));//f
+
+	console.log("---------------------");
+	//包含2个a
+	//^开头  $结尾
+	var reg6 = /a(?!a)/;
+	console.log(reg6.test("a"));//f
+	console.log(reg6.test("aa"));//t
+	console.log(reg6.test("aaa"));//t
+	console.log(reg6.test("b"));//f
+
+
+
+	</script>
+</body>
+</html>

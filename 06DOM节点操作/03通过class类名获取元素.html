@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="mydiv">第一个div</div>
+	<div class="mydiv">第二个div</div>
+	<div class="mydiv">第三个div</div>
+	<span>11</span>
+	<p>22</p>
+	<div id="dd">
+		<div class="mydiv">dd中的第一个</div>
+		<div class="mydiv">dd中的第二个</div>
+		<div>dd中的第3个</div>
+		<div>dd中的第4个</div>
+	</div>
+<script type="text/javascript">
+	var divs = document.getElementsByClassName("mydiv");
+	console.log(divs);
+
+	// FF
+	// function getclass(cls){
+	// 	return  document.getElementsByClassName(cls);
+	// }
+	// var div1 = getclass("mydiv");
+	// console.log(div1);
+	function getClass(cls){
+		//找到所有的标签
+		var elem = document.all?document.all:document.getElementsByTagName("*");
+		//新建数组 
+		var arr = [];
+		//遍历找到所有标签数组
+		for(var i=0; i<elem.length;i++){
+			//判断标签数组所有的元素的类名与传进来的参数cls是否相等 
+			if(elem[i].className==cls){
+				//把具有这个类的元素放进arr数组 
+				arr.push(elem[i]);
+			}
+		}
+		//把找到的数组传出去
+		return arr;
+	}
+	var ds = getClass("mydiv");
+	console.log(ds);
+
+
+	var divId = document.getElementById("dd");
+	console.log(divId);
+	var divCls = divId.getElementsByClassName("mydiv");
+	var div2 = document.getElementById("dd").getElementsByClassName("mydiv");
+
+	function getIdClass(preId,cls){
+		//先找id
+		var pId = document.getElementById(preId);
+
+		//找到所有的标签
+		var elem = pId.all?pId.all:pId.getElementsByTagName("*");
+		//新建数组 
+		var arr = [];
+		//遍历找到所有标签数组
+		for(var i=0; i<elem.length;i++){
+			//判断标签数组所有的元素的类名与传进来的参数cls是否相等 
+			if(elem[i].className==cls){
+				//把具有这个类的元素放进arr数组 
+				arr.push(elem[i]);
+			}
+		}
+		//把找到的数组传出去
+		return arr;
+	}
+
+
+	console.log("-------------");
+	var divssss = getIdClass("dd","mydiv");
+	console.log(divssss);
+</script>
+</body>
+</html>

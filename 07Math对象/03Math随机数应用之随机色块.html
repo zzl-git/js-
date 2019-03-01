@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css" media="screen">
+		#box{
+			width: 200px;
+			height: 500px;
+		}
+		#box div{
+  			width: 100px;
+  			height: 100px;
+  			float: left;
+		}
+		
+	</style>
+</head>
+<body>
+	<div id="box">
+
+	</div>
+<script type="text/javascript">
+	var box = document.getElementById("box");
+	for (var i = 0; i < 10; i++) {
+		var div = document.createElement("div");
+		var r = Math.floor(Math.random()*256);
+		var g = Math.floor(Math.random()*256);
+		var b = Math.floor(Math.random()*256);
+		// div.style.background = 'rgb('+r+','+g+','+b+')'; 
+		div.style.background = "rgb("+r+","+g+","+b+")";
+		box.appendChild(div);
+	};
+
+
+
+</script>
+</body>
+</html>

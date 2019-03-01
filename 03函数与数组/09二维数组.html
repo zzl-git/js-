@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+var arrA = [[1,2,3],
+			[4,5,6],
+			[7,8,9]];
+console.log(arrA);
+
+var arrB = new Array();
+arrB[0] = [1,'zhangsan',17,250];
+arrB[1] = [2,'lisi',18,252];
+arrB[2] = [3,'wangwu',19,380,"高压线"];
+console.log(arrB);
+console.log(arrB[1]);
+console.log(arrB[1][1]);
+
+//遍历  
+//外层循环控制行数, 内存循环控制列数
+for(var i=0; i<arrB.length;i++){
+	//arrB[0]
+	for(var j=0; j<arrB[i].length;j++){
+		document.write(arrB[i][j]+'&nbsp;&nbsp;&nbsp;&nbsp;')
+	}
+	document.write('<br>');
+}
+
+
+
+
+
+</script>	
+</body>
+</html>

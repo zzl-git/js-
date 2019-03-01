@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+	var a = 10;
+	var b = 10.99;
+	var c = 0x1f;
+	console.log(typeof c);
+
+	var d = "123";
+	console.log(d);
+	console.log(typeof d);
+	console.log(Number(d));//123
+	console.log(typeof Number(d));//number
+ 
+	var e = true;
+	console.log(typeof e);
+	console.log(Number(e));//1
+	console.log(typeof Number(e));//number
+
+	console.log(Number(undefined));//NaN not a number
+	console.log(Number(null));//0
+
+
+	var str1 = "2018年12月";
+	console.log(parseInt(str1));
+	console.log(parseInt("123px"));//123
+	console.log(parseInt("123.66"));
+	console.log(parseInt("he is 40"));
+
+	console.log("---------");
+	console.log(parseFloat("10.33.55"));
+
+	console.log(Boolean(1));
+	console.log(Boolean("str"));
+	console.log(Boolean(0));
+	console.log(Boolean(""));
+	console.log(Boolean(undefined));
+	console.log(Boolean(null));
+	console.log("---------");
+	console.log(isNaN(123));
+	</script>
+</body>
+</html>	

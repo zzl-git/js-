@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+var num = 100;
+var newNum = num;
+console.log("基本数据类型");
+console.log(num);
+console.log(newNum);
+num = 2000;
+console.log(num);//2000
+console.log(newNum);//100
+
+var arr = [1,2,3,4];
+//浅复制 
+//浅复制:只是复制数据的地址,只要原始数据改了,复制出来也改了 
+var newArr = arr;
+console.log("复合数据类型");
+console.log(arr);
+console.log(newArr);
+arr[2] = 999999999999;
+console.log(arr);
+console.log(newArr);
+
+console.log("------------");
+var arr1 = [5,6,7,8];
+//深复制 
+//深复制: 复制数据本身, 即使原始数据改了, 它也不会改
+var newArr1 = arr1.slice();
+console.log("复合数据类型");
+console.log(arr1);
+console.log(newArr1);
+arr1[2] = 999999999999;
+console.log(arr1);
+console.log(newArr1);
+
+
+console.log("------------");
+var str1 = "1234567";
+var newStr1 = str1;
+console.log(str1);
+console.log(newStr1);
+str1 = "abcdefg";
+console.log(str1);
+console.log(newStr1);
+console.log("------------");
+var duixiang = {name:"lisi",age:50}
+var newduixiang = deepClone(duixiang);
+console.log(duixiang);
+console.log(newduixiang);
+duixiang.age = 80;
+console.log(duixiang);
+console.log(newduixiang);
+
+function deepClone(obj){
+    var objClone = Array.isArray(obj)?[]:{};
+    if(obj && typeof obj==="object"){
+        for(key in obj){
+            if(obj.hasOwnProperty(key)){
+                //判断ojb子元素是否为对象，如果是，递归复制
+                if(obj[key]&&typeof obj[key] ==="object"){
+                    objClone[key] = deepClone(obj[key]);
+                }else{
+                    //如果不是，简单复制
+                    objClone[key] = obj[key];
+                }
+            }
+        }
+    }
+    return objClone;
+}   
+	
+</script>
+</body>
+</html>

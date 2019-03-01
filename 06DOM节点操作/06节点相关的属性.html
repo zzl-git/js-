@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css" media="screen">
+		.demo{
+			color:red;
+		}
+	</style>
+</head>
+<body>
+<ul id="ul">
+    <li class="li1" id="firstLi" a="你好" b="hello">1234<!-- 我是注释 --></li>
+    <li>红色</li>
+    <li>5678<span>span标签</span></li>
+    <li>蓝色</li>
+</ul>
+<script type="text/javascript">
+	var ul = document.getElementById("ul");
+	var li = ul.getElementsByTagName("li");
+
+	console.log(li[0]);
+	//获取标签内的属性及其值
+	console.log(li[0].getAttributeNode("class"));
+	console.log(li[0].getAttributeNode("id"));
+	console.log(li[0].getAttributeNode("a"));
+	console.log(li[0].getAttributeNode("b"));
+
+	//设置属性 
+	li[0].setAttribute("class", "demo");
+
+
+	console.log("____________________________");
+
+	console.log(li[0]);
+	console.log(li[0].nodeName);//LI
+	console.log(li[0].nodeType);//1
+	console.log(li[0].nodeValue);//NULL
+
+	var text = li[0].firstChild;
+	console.log(text);
+	console.log(text.nodeName);
+	console.log(text.nodeType);
+	console.log(text.nodeValue);
+
+	console.log("____________________________");
+	var attr = li[0].getAttributeNode("class");
+	console.log(attr);
+	console.log(attr.nodeName);
+	console.log(attr.nodeType);
+	console.log(attr.nodeValue);
+	console.log("____________________________");
+	var comment = li[0].lastChild;
+	console.log(comment);
+	console.log(comment.nodeName);
+	console.log(comment.nodeType);
+	console.log(comment.nodeValue);
+	console.log("____________________________");
+	console.log(document.nodeName);
+	console.log(document.nodeType);
+	console.log(document.nodeValue);
+</script>	
+</body>
+</html>

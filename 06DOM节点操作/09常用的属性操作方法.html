@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="xyz" class="qwert">
+		111111111111
+	</div>
+<script type="text/javascript">
+	var body = document.getElementsByTagName("body")[0];
+    var div1 = document.createElement("div");
+    var text1 = document.createTextNode("今天天气不错");
+    div1.appendChild(text1);
+    div1.className = "mydiv";
+    div1.id = "box";
+    body.appendChild(div1);
+
+    console.log(div1.getAttribute("class"));
+    div1.setAttribute("class","abc");
+    div1.removeAttribute("class");
+
+
+    var  divId = document.getElementById("xyz");
+    console.log(divId.getAttribute("class"));
+    divId.setAttribute("class","zxc");
+    divId.removeAttribute("class");
+</script>
+</body>
+</html>

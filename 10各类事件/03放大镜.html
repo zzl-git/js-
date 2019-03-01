@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css" media="screen">
+		/*1.大盒子*/
+		#box{
+			width: 310px;
+			height: 310px;
+			position: relative;
+			left: 100px;
+			top:100px;
+			border: 1px solid #ccc;
+		}
+		#box img{
+			display: block;
+		}
+		/*2.跟随的盒子*/
+		#box .mask{
+			width: 100px;
+			height: 100px;
+			background-color: yellow;
+			opacity: 0.6;
+			position: absolute;
+			left: 0;
+			top: 0 ;
+			display: none;/*开始时候不存在*/ 
+
+		}
+		/*3.大图*/
+		#box .bigBox{
+			position: absolute;
+			width: 310px;
+			height: 310px;
+			left: 330px;
+			top:0;
+			border: 1px solid #ccc;
+			overflow: hidden;
+			display: none;/*开始时候不存在*/
+		}
+		#box .bigBox img{
+			position: absolute;
+			left:0;
+			top:0;
+		}
+	</style>
+</head>
+<body>
+	<!-- 一.最大的盒子 -->
+	<div id="box">
+		<!-- 二.小图 -->
+		<img src="m1.jpg">
+		<!-- 三.鼠标移动盒子 -->
+		<div class="mask" id="mask"></div>
+		<!-- 四.大图 -->
+		<div class="bigBox" id="bigDiv">
+			<img src="b1.jpg" id="bigImg">
+		</div>
+	</div>
+<script type="text/javascript">
+	//1.获取元素 
+	var oDiv = document.getElementById("box");//放小图的盒子
+	var oMask = document.getElementById("mask");//黄色跟随鼠标盒子
+	var oBigDiv = document.getElementById("bigDiv");//放大图的盒子
+	var oBigImg = document.getElementById("bigImg");//大图
+
+	//2.鼠标移动小图上,出现跟随盒子与大图盒子
+	oDiv.onmouseover=function(){
+		oMask.style.display = oBigDiv.style.display = "block";
+	}
+	oDiv.onmouseout=function(){
+		oMask.style.display = oBigDiv.style.display = "none";
+	}
+
+
+
+	//3.移动鼠标,黄色区域跟随移动 
+	//思路使用l,t两个变量来控制数值
+	// oMask.style.left = l+"px";
+	// oMask.style.top= t+"px";
+	// clientX 当事件被触时,鼠标指针向对于浏览器页面的水平坐标
+	// clientY 
+	oDiv.onmousemove = function(ev){
+		//3.1设置l与t的值 
+		var l = ev.clientX-oDiv.offsetLeft-oMask.offsetWidth/2;
+		var t = ev.clientY-oDiv.offsetTop-oMask.offsetHeight/2;
+
+		//3.3限定黄色盒子移动的范围
+		//限定l与t 
+		if(l<0){
+			l=0;
+		}
+		if(l>oDiv.offsetWidth-oMask.offsetWidth){
+			l=oDiv.offsetWidth-oMask.offsetWidth;
+		}
+		if(t<0){
+			t=0;
+		}
+		if(t>oDiv.offsetHeight-oMask.offsetHeight){
+			t=oDiv.offsetHeight-oMask.offsetHeight
+		}
+		//3.2给黄色盒子设置 
+		oMask.style.left = l+"px";
+		oMask.style.top= t+"px";
+
+		//3.4设置大图 
+		// oDiv.offsetWidth-oMask.offsetWidth
+		// oBigImg.offsetWidth-oBigDiv.offsetWidth
+		oBigImg.style.left = -l/(oDiv.offsetWidth-oMask.offsetWidth) *(oBigImg.offsetWidth-oBigDiv.offsetWidth)+"px";
+		oBigImg.style.top =-t/(oDiv.offsetHeight-oMask.offsetHeight) *(oBigImg.offsetHeight-oBigDiv.offsetHeight)   +"px";
+	}
+	// oBigImg.style.left = "100px";
+	// oBigImg.style.top = "100px";
+</script>
+</body>
+</html>

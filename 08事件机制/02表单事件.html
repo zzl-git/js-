@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form>
+		<input type="text">
+		<input type="reset" value="重置">
+		<input type="submit" value="提交">
+	</form>
+	<script type="text/javascript">
+	var form = document.getElementsByTagName("form")[0];
+	form.onreset = function(){
+		alert("biaodan");
+	}
+	form.onsubmit = function(){
+		alert("abcdefg");
+	}
+
+
+
+	</script>
+</body>
+</html>

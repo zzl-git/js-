@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+var a = 10;
+var b = [10];
+</script>
+<div id="dv">你好</div>
+<span>111</span>
+<span>222</span>
+<p class="dvp">你是谁</p>
+<script type="text/javascript">
+	// 通过id获取元素  一个, 变量
+	var d1 = document.getElementById("dv");
+	console.log(d1);
+	//通过标签名获取元素  多个,数组
+	var d2 = document.getElementsByTagName("span");
+	console.log(d2);
+	console.log(typeof d2);
+	console.log(d2[0]);
+	console.log(d2[1]);
+
+	// 通过类名获取元素
+	var d3 = document.getElementsByClassName("dvp");
+	console.log(d3);
+	console.log(d3[0]);
+</script>
+</body>
+</html>

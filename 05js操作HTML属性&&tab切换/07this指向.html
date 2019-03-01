@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div>div元素</div>
+<span>span元素</span>
+<script type="text/javascript">
+	var div = document.getElementsByTagName('div')[0];
+	//1. 获取元素 
+	//2. 事件
+	//3. 事件对应的方法 
+	// 函数中的this, 指向了函数的所有者
+	//函数的所有者,函数主人
+	div.onclick = function(){
+		console.log("div");
+		console.log(this);//div
+	}
+	//如果没有所有者时,指向window
+	function abc(){
+		console.log("aaaaa");
+		console.log(this);//window
+	}
+	abc();
+
+	function dianji(){
+		console.log(this);
+	}
+	dianji();//window
+	console.log("---------------");
+	var span = document.getElementsByTagName('span')[0];
+	span.onclick = dianji;
+</script>
+
+</body>
+</html>

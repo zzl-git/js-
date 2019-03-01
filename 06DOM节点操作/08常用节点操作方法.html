@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	var body=document.getElementsByTagName("body")[0];
+    var div1=document.createElement("div");
+    var text1=document.createTextNode("今天天气不错");
+    var div2=document.createElement("div");
+    var div3=document.createElement("div");
+    var text3=document.createTextNode("下雨");
+    var div4=document.createElement("div");
+    var text4=document.createTextNode("今天天气晴朗");
+
+
+    body.appendChild(div1);
+    div1.appendChild(text1);
+
+    div3.appendChild(text3);
+    // body.appendChild(div3);
+    // 
+    //在div1节前面插入div3
+    body.insertBefore(div3, div1);
+
+    div4.appendChild(text4);
+    //用div4替换div1
+    body.replaceChild(div4,div1);
+
+    body.removeChild(div3);
+</script>
+</body>
+</html>

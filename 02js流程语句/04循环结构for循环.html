@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+// for (循环初值;循环结束终值;每次变化量) {
+// 	循环执行的语句
+// }
+for(var i=0; i<20; i++){
+	console.log("胡伟跑了第"+i+"圈");
+}
+
+// 求1到9的和
+// sum = 加数+加数 
+// 1+2+3+4+5+6+7+8+9
+var sum = 0;//和
+for(var j=1;j<=9;j++){
+	
+	sum +=j;
+	console.log(sum);
+} 
+// 1+3+5+7+9+...+99 
+var he = 0;
+for(var k=1;k<=99;k=k+2){
+	he+=k;
+	console.log(he);
+}
+
+var he1 = 0;
+for(var l = 1; l<=99;l++){
+	if(l%3==0){
+		he1 +=l;
+	}
+	
+	console.log(he1);
+}
+// 1-99是3的倍数的和
+// 和=0
+// 1-99,如果3整除 +数; 不能被3整除 +1
+
+var jieguo = 0;
+for(var m=1; m<=99; m++){
+	if(m%3==0){
+		jieguo+=m;	
+	}else{
+		jieguo+=1;
+	}
+}
+console.log(jieguo);
+</script>	
+</body>
+</html>

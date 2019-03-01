@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	//1.字面量
+	var car = {
+		name:"五菱宏光",
+		price: 4.99,
+		color: ["yellow","white","gray"],
+		size: [5,7],
+		//方法
+		shuo:function(x,y){
+			console.log("我是"+x+"我的颜色是"+y);
+		}
+	}
+	console.log(car.shuo(1,2));
+	console.log(car.shuo(car.name,car.color));
+	// var abc =function(x,y){
+	// 	console.log(x+y);
+	// }
+
+	// function add(x,y){
+	// 	console.log(x+y);
+	// }
+
+
+
+
+
+
+	//2.通过new方法 
+	var ditie = new Object();
+	//点语法,对象属性
+	ditie.name ="1号线";
+	ditie.price = 200000000;
+	ditie.color = ["white","gray","green"];
+	ditie.size = [8,16];
+	ditie.shuo = function(){
+		console.log("我是地铁");
+	}
+	ditie.shuo();
+	
+
+	//对象构造器,工厂方法
+	//波音747",3600,["white","red"],1000 
+	function FeiJi(name,price,color,dongli){
+		// feijiBoyin.name = "波音747"
+		this.name = name,
+		this.price = price,
+		this.color = color,
+		this.dongli = dongli,
+		this.shuohua = function(){
+			return "I am"+this.name;
+		}
+		this.hello = function(){
+			return "我是大飞机";
+		}
+	}
+	var feijiBoyin = new FeiJi("波音747",3600,["white","red"],1000);
+	console.log(feijiBoyin.shuohua());
+	console.log(feijiBoyin.hello());
+	var feijiKongke = new FeiJi("空客380",5000,["white","blue"],2000);
+	// console.log(feijiKongke.length);
+	// for in 不需要循环初始值,终值,变化
+	// for in 中间停不了 
+	for(var x in feijiKongke){
+		console.log(feijiKongke[x]);
+	}
+
+	var arr = [1,2,3,4,5];
+	for(var y in arr){
+		console.log(arr[y]);
+	}
+
+
+</script>
+</body>
+</html>

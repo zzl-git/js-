@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="box">
+	<div id="dv">你好</div>
+	<span>[我是某某班学生],[123]</span>
+	<span>贵阳</span>
+	<p class="dvp">你是谁</p>
+</div>
+<script type="text/javascript">
+	var box = document.getElementById("box");
+	console.log(box);
+	// var d1 = box.getElementById("dv");
+	// console.log(d1);
+	// 方法没有名字, 匿名方法 
+	// onclick 事件
+	// 1.获取元素
+	// 2.绑定事件 (onclick事件绑定给box)
+	// 3.执行事件所对应的函数
+	// box.onclick = function(){
+	// 	console.log("我是谁");
+	// }
+
+	// var abc = document.getElementById('dv');
+	// var dv = document.getElementById("dv");
+	// dv.onclick = function(){
+
+	// }
+	var spans = document.getElementsByTagName("span");
+	spans[0].onclick = function(){
+		console.log("1111");
+	}
+	spans[1].onclick = function(){
+		console.log("2222");
+	}
+
+	var box = document.getElementById("box");
+	// var spanss = box.getElementById("dv");
+	var dvp = box.getElementsByClassName("dvp");
+	console.log(dvp);
+</script>	
+</body>
+</html>

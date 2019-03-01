@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css" media="screen">
+		*{
+			margin:0;
+			padding: 0;
+		}
+		#box{
+			width: 72px;
+			height: 78px;
+			background:url(images/shunli.jpg);
+			background-size: 72px 78px;
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+<script type="text/javascript">
+	//1.获取元素 
+	var  box = document.getElementById("box");
+	var timer = null;
+	// box.style.left = l +"px";
+	// box.style.top = t+'px';
+	// 
+	//2.绑定事件 
+	//37左, 38上,39右, 40下
+	document.onkeydown= function(ev){
+		var evt = ev||window.event;
+		//每一次开始的时候把定时器清除
+		clearInterval(timer);
+		console.log(evt.keyCode);
+		var code = evt.keyCode;
+		//3.规定执行的动作,在30毫秒之内完成
+		timer = setInterval(function(){
+			//3.1左
+			if(code==37){
+				box.style.left = box.offsetLeft - 5 +"px";
+			}
+			//3.2右
+		    if(code==39){
+				box.style.left = box.offsetLeft + 5 +"px";
+			}
+			//3.3上
+			if(code==38){
+				box.style.top = box.offsetTop - 5 +"px";
+			}
+			//3.4下
+			if(code==40){
+				box.style.top = box.offsetTop + 5 +"px";
+			}
+
+		},30);
+	}
+	//4.松开键,停 
+	document.onkeyup = function(){
+		clearInterval(timer);
+	}
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

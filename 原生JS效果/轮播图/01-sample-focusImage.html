@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+	div{
+		width:730px;
+		height:454px;
+		margin:0 auto;
+		position:relative;
+	}
+	ul{
+		list-style-type:none;
+		padding:0;
+	}
+	ul.list{
+		position:relative;
+	}
+	ul.list>li{
+		position:absolute;
+	}
+	ul.nav{
+		position:absolute;
+		bottom:0px;
+		left:300px;
+	}
+	ul.nav>li{
+		float:left;
+		margin:0 2px;
+		color:white;
+		background:#3e3e3e;
+		border-radius:50%;
+		width:18px;
+		height:18px;
+		line-height:18px;
+		text-align:center;
+		cursor:pointer;
+	}
+	ul.nav>li.selected{
+		background:#b61b1f;
+	}
+  </style>
+ </head>
+ <body>
+  
+  <div>
+	<ul class="list">
+		<li><a href="#"><img src="img/1.jpg" /></a></li>
+		<li><a href="#"><img src="img/2.jpg" /></a></li>
+		<li><a href="#"><img src="img/3.jpg" /></a></li>
+		<li><a href="#"><img src="img/4.jpg" /></a></li>
+		<li><a href="#"><img src="img/5.jpg" /></a></li>
+	</ul>
+	<ul class="nav">
+		<li class="selected">1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+	</ul>
+  </div>
+
+  <script type="text/javascript" src="js/jquery-1.11.3.js">
+  </script>
+  <script type="text/javascript">
+	$('.nav').on('click','li',function(){
+		//1.处理导航变化:其他都移除'selected',点击的添加
+		$('.nav>li').removeClass('selected');
+		$(this).addClass('selected');
+		//2.获取index操作相对应图片
+		var index = $('.nav>li').index(this);
+		
+		//3.消失所有图片
+		$('.list>li:eq('+index+')').fadeIn('slow').siblings().fadeOut('slow');
+	})
+  </script>
+ </body>
+</html>

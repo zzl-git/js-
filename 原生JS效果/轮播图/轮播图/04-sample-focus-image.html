@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>焦点图</title>
+  <style type="text/css">
+	*{
+		margin:0;
+		padding:0;
+	}
+    ul{
+		list-style:none;
+	}
+	.container{
+		position:absolute;
+		width:271px;
+		height:172px;
+	}
+	.imageList{		
+		position:relative;
+	}
+	.imageList>li{
+		position:absolute;
+		opacity:0;
+	}	
+	.imageList>li:first-child{
+		opacity:1;
+	}
+	.nav{
+		position:absolute;
+		right:10px;
+		bottom:5px;
+		z-index:1;
+	}
+	.nav>li{
+		float:left;
+		width:30px;
+		height:3px;
+		background-color:black;
+		opacity:0.6;
+		margin-right:3px;
+	}
+
+	.nav>li.active{
+		background-color:orange;
+	}
+  </style>
+ </head>
+ <body>
+  <!-- 1.透明度切换方式 -->
+  <div class="container">	 
+	  <ul class="imageList">
+		<li><img src="room/1.jpg"/></li>
+		<li><img src="room/2.jpg"/></li>
+		<li><img src="room/3.jpg"/></li>
+		<li><img src="room/4.jpg"/></li>
+		<li><img src="room/5.jpg"/></li>
+	  </ul>	
+	  <ul class="nav">
+		<li class="active"></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	  </ul>
+  </div>
+
+  <script type="text/javascript">
+	//当前索引
+	var currentIndex = 0;
+	
+	//每个3s切换一次
+	var autoTimer = setInterval(function(){
+		//计算接下来索引值
+		var nextIndex = currentIndex!=4?currentIndex+1:0;		
+		//获取图片列表对象
+		var imageList = document.querySelector('.imageList');
+		
+		//1.使当前显示的逐渐消失
+		var current = imageList.children[currentIndex];
+		var fadeOut = setInterval(function(){
+			var opacity = parseFloat(getComputedStyle(current).opacity);
+			if(opacity>0){
+				opacity = opacity-0.1;
+				console.log(opacity);
+				current.style.opacity = opacity;
+			}else{
+				clearInterval(fadeOut);
+				fadeOut = null;
+			}
+		},30);
+		
+		//2.使接下来那张图逐渐出现		
+		var next = imageList.children[nextIndex];
+		var fadeIn = setInterval(function(){
+			var opacity = parseFloat(getComputedStyle(next).opacity);
+			if(opacity < 1){
+				opacity = opacity+0.1;
+				next.style.opacity = opacity;
+			}else{
+				clearInterval(fadeIn);
+				fadeIn = null;
+			}
+		},30);
+		
+		//激活当前导航按钮
+		var nav = document.querySelector('.nav');
+		nav.children[currentIndex].className='';
+		nav.children[nextIndex].className='active';
+
+		//更新当前索引值
+		currentIndex = nextIndex;
+	},3000);
+
+
+	nav(div,['img1.jpg,....'])
+  </script>
+ </body>
+</html>

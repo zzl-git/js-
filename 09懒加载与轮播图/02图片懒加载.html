@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css" media="screen">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		img{
+			width:310px;
+			height: 310px;
+			border: 1px solid #333;
+		}
+	</style>
+<script type="text/javascript">
+//1.窗口加载\滚动\改变尺寸,执行相同的方法
+window.onload = window.onscroll = window.onresize= function(){
+	// 2.获取所有图片
+	var aImg = document.getElementsByTagName('img');
+	//3.页面滚动,卷出去的上
+	var scrTop = document.documentElement.scrollTop||document.body.scrollTop;
+	console.log(scrTop);
+	//4.可视区域的高度
+	var cH = document.documentElement.clientHeight;
+	console.log(cH);
+	for(var i=0; i<aImg.length;i++){
+		if(aImg[i].offsetTop<scrTop+cH-200){
+			aImg[i].src= aImg[i].getAttribute('_src');
+		}
+	}
+}
+
+
+
+
+	</script>	
+</head>
+<body>
+	<img _src="img/m1.jpg">
+	<img _src="img/m2.jpg">
+	<img _src="img/m3.jpg">
+	<img _src="img/m4.jpg">
+	<img _src="img/m5.jpg">
+	<img _src="img/m6.jpg">
+	<img _src="img/m7.jpg">
+	<img _src="img/m8.jpg">
+	<img _src="img/m9.jpg">
+	<img _src="img/m10.jpg">
+	<img _src="img/m1.jpg">
+	<img _src="img/m2.jpg">
+	<img _src="img/m3.jpg">
+	<img _src="img/m4.jpg">
+	<img _src="img/m5.jpg">
+	<img _src="img/m6.jpg">
+	<img _src="img/m7.jpg">
+	<img _src="img/m8.jpg">
+	<img _src="img/m9.jpg">
+	<img _src="img/m10.jpg">
+	<img _src="img/m1.jpg">
+	<img _src="img/m2.jpg">
+	<img _src="img/m3.jpg">
+	<img _src="img/m4.jpg">
+	<img _src="img/m5.jpg">
+	<img _src="img/m6.jpg">
+	<img _src="img/m7.jpg">
+	<img _src="img/m8.jpg">
+	<img _src="img/m9.jpg">
+	<img _src="img/m10.jpg">
+	<img _src="img/m1.jpg">
+	<img _src="img/m2.jpg">
+	<img _src="img/m3.jpg">
+	<img _src="img/m4.jpg">
+	<img _src="img/m5.jpg">
+	<img _src="img/m6.jpg">
+	<img _src="img/m7.jpg">
+	<img _src="img/m8.jpg">
+	<img _src="img/m9.jpg">
+	<img _src="img/m10.jpg">
+	<img _src="img/m1.jpg">
+	<img _src="img/m2.jpg">
+	<img _src="img/m3.jpg">
+	<img _src="img/m4.jpg">
+	<img _src="img/m5.jpg">
+	<img _src="img/m6.jpg">
+	<img _src="img/m7.jpg">
+	<img _src="img/m8.jpg">
+	<img _src="img/m9.jpg">
+	<img _src="img/m10.jpg">
+	<img _src="img/m1.jpg">
+	<img _src="img/m2.jpg">
+	<img _src="img/m3.jpg">
+	<img _src="img/m4.jpg">
+	<img _src="img/m5.jpg">
+	<img _src="img/m6.jpg">
+	<img _src="img/m7.jpg">
+	<img _src="img/m8.jpg">
+	<img _src="img/m9.jpg">
+	<img _src="img/m10.jpg">
+	<img _src="img/m1.jpg">
+	<img _src="img/m2.jpg">
+	<img _src="img/m3.jpg">
+	<img _src="img/m4.jpg">
+	<img _src="img/m5.jpg">
+	<img _src="img/m6.jpg">
+	<img _src="img/m7.jpg">
+	<img _src="img/m8.jpg">
+	<img _src="img/m9.jpg">
+	<img _src="img/m10.jpg">
+	<img _src="img/m1.jpg">
+	<img _src="img/m2.jpg">
+	<img _src="img/m3.jpg">
+	<img _src="img/m4.jpg">
+	<img _src="img/m5.jpg">
+	<img _src="img/m6.jpg">
+	<img _src="img/m7.jpg">
+	<img _src="img/m8.jpg">
+	<img _src="img/m9.jpg">
+	<img _src="img/m10.jpg">
+	<img _src="img/m1.jpg">
+	<img _src="img/m2.jpg">
+	<img _src="img/m3.jpg">
+	<img _src="img/m4.jpg">
+	<img _src="img/m5.jpg">
+	<img _src="img/m6.jpg">
+	<img _src="img/m7.jpg">
+	<img _src="img/m8.jpg">
+	<img _src="img/m9.jpg">
+	<img _src="img/m10.jpg">
+	<img _src="img/m1.jpg">
+	<img _src="img/m2.jpg">
+	<img _src="img/m3.jpg">
+	<img _src="img/m4.jpg">
+	<img _src="img/m5.jpg">
+	<img _src="img/m6.jpg">
+	<img _src="img/m7.jpg">
+	<img _src="img/m8.jpg">
+	<img _src="img/m9.jpg">
+	<img _src="img/m10.jpg">
+	<img _src="img/m1.jpg">
+	<img _src="img/m2.jpg">
+	<img _src="img/m3.jpg">
+	<img _src="img/m4.jpg">
+	<img _src="img/m5.jpg">
+	<img _src="img/m6.jpg">
+	<img _src="img/m7.jpg">
+	<img _src="img/m8.jpg">
+	<img _src="img/m9.jpg">
+	<img _src="img/m10.jpg">
+	<img _src="img/m1.jpg">
+	<img _src="img/m2.jpg">
+	<img _src="img/m3.jpg">
+	<img _src="img/m4.jpg">
+	<img _src="img/m5.jpg">
+	<img _src="img/m6.jpg">
+	<img _src="img/m7.jpg">
+	<img _src="img/m8.jpg">
+	<img _src="img/m9.jpg">
+	<img _src="img/m10.jpg">
+	<img _src="img/m1.jpg">
+	<img _src="img/m2.jpg">
+	<img _src="img/m3.jpg">
+	<img _src="img/m4.jpg">
+	<img _src="img/m5.jpg">
+	<img _src="img/m6.jpg">
+	<img _src="img/m7.jpg">
+	<img _src="img/m8.jpg">
+	<img _src="img/m9.jpg">
+	<img _src="img/m10.jpg">
+	<img _src="img/m1.jpg">
+	<img _src="img/m2.jpg">
+	<img _src="img/m3.jpg">
+	<img _src="img/m4.jpg">
+	<img _src="img/m5.jpg">
+	<img _src="img/m6.jpg">
+	<img _src="img/m7.jpg">
+	<img _src="img/m8.jpg">
+	<img _src="img/m9.jpg">
+	<img _src="img/m10.jpg">
+	<img _src="img/m1.jpg">
+	<img _src="img/m2.jpg">
+	<img _src="img/m3.jpg">
+	<img _src="img/m4.jpg">
+	<img _src="img/m5.jpg">
+	<img _src="img/m6.jpg">
+	<img _src="img/m7.jpg">
+	<img _src="img/m8.jpg">
+	<img _src="img/m9.jpg">
+	<img _src="img/m10.jpg">
+	<img _src="img/m1.jpg">
+	<img _src="img/m2.jpg">
+	<img _src="img/m3.jpg">
+	<img _src="img/m4.jpg">
+	<img _src="img/m5.jpg">
+	<img _src="img/m6.jpg">
+	<img _src="img/m7.jpg">
+	<img _src="img/m8.jpg">
+	<img _src="img/m9.jpg">
+	<img _src="img/m10.jpg">
+	<img _src="img/m1.jpg">
+	<img _src="img/m2.jpg">
+	<img _src="img/m3.jpg">
+	<img _src="img/m4.jpg">
+	<img _src="img/m5.jpg">
+	<img _src="img/m6.jpg">
+	<img _src="img/m7.jpg">
+	<img _src="img/m8.jpg">
+	<img _src="img/m9.jpg">
+	<img _src="img/m10.jpg">
+	<img _src="img/m1.jpg">
+	<img _src="img/m2.jpg">
+	<img _src="img/m3.jpg">
+	<img _src="img/m4.jpg">
+	<img _src="img/m5.jpg">
+	<img _src="img/m6.jpg">
+	<img _src="img/m7.jpg">
+	<img _src="img/m8.jpg">
+	<img _src="img/m9.jpg">
+	<img _src="img/m10.jpg">
+	<img _src="img/m1.jpg">
+	<img _src="img/m2.jpg">
+	<img _src="img/m3.jpg">
+	<img _src="img/m4.jpg">
+	<img _src="img/m5.jpg">
+	<img _src="img/m6.jpg">
+	<img _src="img/m7.jpg">
+	<img _src="img/m8.jpg">
+	<img _src="img/m9.jpg">
+	<img _src="img/m10.jpg">
+	<img _src="img/m1.jpg">
+	<img _src="img/m2.jpg">
+	<img _src="img/m3.jpg">
+	<img _src="img/m4.jpg">
+	<img _src="img/m5.jpg">
+	<img _src="img/m6.jpg">
+	<img _src="img/m7.jpg">
+	<img _src="img/m8.jpg">
+	<img _src="img/m9.jpg">
+	<img _src="img/m10.jpg">
+	<img _src="img/m1.jpg">
+	<img _src="img/m2.jpg">
+	<img _src="img/m3.jpg">
+	<img _src="img/m4.jpg">
+	<img _src="img/m5.jpg">
+	<img _src="img/m6.jpg">
+	<img _src="img/m7.jpg">
+	<img _src="img/m8.jpg">
+	<img _src="img/m9.jpg">
+	<img _src="img/m10.jpg">
+	<img _src="img/m1.jpg">
+	<img _src="img/m2.jpg">
+	<img _src="img/m3.jpg">
+	<img _src="img/m4.jpg">
+	<img _src="img/m5.jpg">
+	<img _src="img/m6.jpg">
+	<img _src="img/m7.jpg">
+	<img _src="img/m8.jpg">
+	<img _src="img/m9.jpg">
+	<img _src="img/m10.jpg">
+	<img _src="img/m1.jpg">
+	<img _src="img/m2.jpg">
+	<img _src="img/m3.jpg">
+	<img _src="img/m4.jpg">
+	<img _src="img/m5.jpg">
+	<img _src="img/m6.jpg">
+	<img _src="img/m7.jpg">
+	<img _src="img/m8.jpg">
+	<img _src="img/m9.jpg">
+	<img _src="img/m10.jpg">
+	<img _src="img/m1.jpg">
+	<img _src="img/m2.jpg">
+	<img _src="img/m3.jpg">
+	<img _src="img/m4.jpg">
+	<img _src="img/m5.jpg">
+	<img _src="img/m6.jpg">
+	<img _src="img/m7.jpg">
+	<img _src="img/m8.jpg">
+	<img _src="img/m9.jpg">
+	<img _src="img/m10.jpg">
+	<img _src="img/m1.jpg">
+	<img _src="img/m2.jpg">
+	<img _src="img/m3.jpg">
+	<img _src="img/m4.jpg">
+	<img _src="img/m5.jpg">
+	<img _src="img/m6.jpg">
+	<img _src="img/m7.jpg">
+	<img _src="img/m8.jpg">
+	<img _src="img/m9.jpg">
+	<img _src="img/m10.jpg">
+	<img _src="img/m1.jpg">
+	<img _src="img/m2.jpg">
+	<img _src="img/m3.jpg">
+	<img _src="img/m4.jpg">
+	<img _src="img/m5.jpg">
+	<img _src="img/m6.jpg">
+	<img _src="img/m7.jpg">
+	<img _src="img/m8.jpg">
+	<img _src="img/m9.jpg">
+	<img _src="img/m10.jpg">
+	<img _src="img/m1.jpg">
+	<img _src="img/m2.jpg">
+	<img _src="img/m3.jpg">
+	<img _src="img/m4.jpg">
+	<img _src="img/m5.jpg">
+	<img _src="img/m6.jpg">
+	<img _src="img/m7.jpg">
+	<img _src="img/m8.jpg">
+	<img _src="img/m9.jpg">
+	<img _src="img/m10.jpg">
+	<img _src="img/m1.jpg">
+	<img _src="img/m2.jpg">
+	<img _src="img/m3.jpg">
+	<img _src="img/m4.jpg">
+	<img _src="img/m5.jpg">
+	<img _src="img/m6.jpg">
+	<img _src="img/m7.jpg">
+	<img _src="img/m8.jpg">
+	<img _src="img/m9.jpg">
+	<img _src="img/m10.jpg">
+	<img _src="img/m1.jpg">
+	<img _src="img/m2.jpg">
+	<img _src="img/m3.jpg">
+	<img _src="img/m4.jpg">
+	<img _src="img/m5.jpg">
+	<img _src="img/m6.jpg">
+	<img _src="img/m7.jpg">
+	<img _src="img/m8.jpg">
+	<img _src="img/m9.jpg">
+	<img _src="img/m10.jpg">
+	<img _src="img/m1.jpg">
+	<img _src="img/m2.jpg">
+	<img _src="img/m3.jpg">
+	<img _src="img/m4.jpg">
+	<img _src="img/m5.jpg">
+	<img _src="img/m6.jpg">
+	<img _src="img/m7.jpg">
+	<img _src="img/m8.jpg">
+	<img _src="img/m9.jpg">
+	<img _src="img/m10.jpg">
+	<img _src="img/m1.jpg">
+	<img _src="img/m2.jpg">
+	<img _src="img/m3.jpg">
+	<img _src="img/m4.jpg">
+	<img _src="img/m5.jpg">
+	<img _src="img/m6.jpg">
+	<img _src="img/m7.jpg">
+	<img _src="img/m8.jpg">
+	<img _src="img/m9.jpg">
+	<img _src="img/m10.jpg">
+	<img _src="img/m1.jpg">
+	<img _src="img/m2.jpg">
+	<img _src="img/m3.jpg">
+	<img _src="img/m4.jpg">
+	<img _src="img/m5.jpg">
+	<img _src="img/m6.jpg">
+	<img _src="img/m7.jpg">
+	<img _src="img/m8.jpg">
+	<img _src="img/m9.jpg">
+	<img _src="img/m10.jpg">
+	
+</body>
+</html>

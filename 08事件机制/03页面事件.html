@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body style="height:2000px;">
+<script type="text/javascript">
+	var num = 0;
+	// 浏览器的页面大小改变
+	window.onresize=function(){
+		num++;
+		console.log("我改变了"+ num +"次");
+	}
+
+	// 浏览器页面滚动
+	window.onscroll = function(){
+		var sTop = document.documentElement.scrollTop|| document.body.scrollTop;
+		console.log(sTop);
+	}
+
+	window.oncontextmenu = function(){
+		alert("1111111111111111111");
+	}
+
+
+
+
+</script>
+</body>
+</html>

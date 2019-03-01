@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#div1{
+			width: 200px;
+			height: 200px;
+			background: red;
+		}
+		a:hover{
+
+		}
+	</style>
+</head>
+<body>
+	<div id="div1">
+		我是div1
+	</div>
+	<div id="div2" style="width:100px;height:100px;background:yellow">
+		我是div1
+	</div>
+<script type="text/javascript">
+	var div1 = document.getElementById("div1");
+	var div2 = document.getElementById("div2");
+	console.log(div1.style.width);//kong
+	console.log(div2.style.width);//100px
+	// div1.style.width = '500px';
+	//style.width 只能获取设置行内样式 
+	//Ie6-IE11
+	// console.log(div1.currentStyle.width);
+
+	//IE9及现代浏览器
+	console.log(window.getComputedStyle(div1,null).width);//200px
+	console.log(window.getComputedStyle(div2,null).width);//100px
+	// console.log(window.getComputedStyle(a,":hover").width);
+
+	function getStyle(ele,attr){
+		if(ele.currentStyle){
+			return ele.currentStyle[attr];
+		}else{
+			return window.getComputedStyle(ele,null)[attr];
+		}
+	}
+	console.log(getStyle(div1,"width"));
+	console.log(getStyle(div2,"height"));
+</script>
+</body>
+</html>

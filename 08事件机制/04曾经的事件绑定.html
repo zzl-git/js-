@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css" media="screen">
+		#fu{
+			width: 100px;
+			height: 100px;
+			background-color: yellow;
+		}
+	</style>
+</head>
+<body>
+	<div id="fu">
+		点击
+	</div>
+<script type="text/javascript">
+	var div = document.getElementsByTagName("div");
+	// div[0].onclick = function(){
+	// 	console.log("点我第一次");
+	// }
+	//为同一个对象绑定多个事件处理程序,只有最后一个程序发生作用
+	// div[0].onclick = function(){
+	// 	console.log("点我第二次");
+	// }
+
+	function eve1(){
+		console.log("点我第一次");
+	}
+	function eve2(){
+		console.log("点我第二次");
+	}
+	div[0].onclick = function(){
+		eve1();
+		eve2();
+	}
+</script>
+</body>
+</html>

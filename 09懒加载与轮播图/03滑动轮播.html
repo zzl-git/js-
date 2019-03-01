@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css" media="screen">
+		* {margin:0; padding:0;}
+        ul {list-style: none;}
+        img {
+            vertical-align: middle;  /*除去 图片底部有3像素空白缝隙的问题 */
+        }
+        /*一.最外层盒子*/
+        .box{
+        	width: 490px;
+        	height: 170px;
+        	margin: 100px auto;
+        	border: 1px solid #ccc;
+        	padding: 5px;
+        }
+        /*二.紧贴的盒子*/
+        .inner{
+        	width: 490px;
+        	height: 170px;
+        	background-color:pink;
+        	position: relative;
+        	overflow: hidden;
+        }
+        /*三.定位ul*/
+        .inner ul{
+        	width: 1000%; 
+        	position: absolute;
+        	left:0;
+        	top:0;
+        }
+        .inner ul li{
+        	float: left;
+        }
+        /*四.指示器*/
+        .square{
+			position: absolute;
+			right: 10px;
+			bottom:10px;
+        }
+        .square span{
+        	display: inline-block;
+        	width: 16px;
+        	height: 16px;
+        	border: 1px solid #ccc;
+        	background-color:#fff;
+        	text-align: center;
+        	line-height: 16px;
+        	margin: 0 3px;
+        	cursor: pointer;
+        }
+		/*五.选中类样式*/
+		.square span.current{
+			background-color: orange;
+			color:white;
+		}
+	</style>
+</head>
+<body>
+<!-- 一.最外层盒子 -->
+<div class="box" id="box">
+	<!-- 二.第二层,显示轮播图区域 -->
+	<div class="inner">
+		<!-- 三.ul中放图片 -->
+		<ul>
+			<li><a href="#"><img src="images/01.jpg"></a></li>
+			<li><a href="#"><img src="images/02.jpg"></a></li>
+			<li><a href="#"><img src="images/03.jpg"></a></li>
+			<li><a href="#"><img src="images/04.jpg"></a></li>
+			<li><a href="#"><img src="images/05.jpg"></a></li>
+		</ul>
+		<!-- 四.div盛放所有的12345 -->
+		<div class="square">
+			<span class="current">1</span>
+			<span>2</span>
+			<span>3</span>
+			<span>4</span>
+			<span>5</span>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	//1.获取元素
+	var box = document.getElementById("box");
+	var inner = box.children[0];//inner这个div
+	var ul = inner.children[0];//ul
+	var spans = inner.children[1].children;//所有的span数组
+	var scrollWidth = inner.offsetWidth;//可视区域的宽度
+	// console.log(scrollWidth);
+	// console.log(box);
+	// box.abc = "xyz";
+	// console.log(box);
+	// console.log(box.getAttribute('abc'));
+	// console.log(box.abc);
+
+
+	// 2.给5个span都要绑定事件
+	for(var i=0;i<spans.length; i++){
+		//2.1给每个span添加属性,就是索引号 
+		spans[i].index = i;
+		//2.2给每个span添加事件
+		spans[i].onmouseover=function(){
+			//2.3让所有的span都没有样式 
+			for(var j=0; j<spans.length;j++){
+				spans[j].className="";
+			}
+			//2.4鼠标放在谁上面,那个span就有current这个样式
+			this.className = "current";
+			//index 0-4 *490  
+			//0 490 980 1470 1960
+			animate(ul,-this.index*scrollWidth);
+		}
+
+	}
+	// ul.style.left = "-1960px";
+
+	//1->4  
+
+	//封装好,运动函数
+	//obj  对象 
+	//target  目标位置,让scrollLeft移动多少
+	//
+	//ul   -1470
+	console.log(ul.offsetLeft);
+	function animate (obj,target){
+		clearInterval(obj.timer);
+			// ul.style.left = -this.index*scrollWidth+"px";
+			//从1-->5 left小
+			//从5-->1 left变大
+			//每次移动这个距离,张数*图片的宽度
+			//3.1目标位置
+			//3.2 速度正反
+			var speed = obj.offsetLeft < target ? 15 : -15;
+			obj.timer = setInterval(function(){
+				//3.3应该运动的距离
+				//   -1470 - 0 
+				//   1470  1456 1472
+				var result = target - obj.offsetLeft;
+				// 0  -15px
+				obj.style.left = obj.offsetLeft + speed + "px";
+				if(Math.abs(result)<=15){
+					obj.style.left = target + "px";
+					clearInterval(obj.timer);
+				}
+		},10);
+	}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css" media="screen">
+		#box{
+			width: 400px;
+			background: #ddd;
+			margin: 15px auto;
+			padding: 10px 10px;
+			font-size: 18px;
+		}
+		#pinglun{
+			margin-top: 15px; 
+		}
+		#txt{
+			width: 352px;
+			height: 200px;
+			font-size: 18px;
+			vertical-align: top;
+		}
+		#shuzi{
+			text-align: right;
+		}
+		#but{
+			width: 100px;
+			height: 30px;
+			background: red;
+			margin-left:45px;
+		}
+		#uls li{
+			margin-top: 10px;
+		}
+		#uls p{
+			padding: 30px 0; background: #fff;
+		}
+		/*删除按钮*/
+		#del{
+			color: red;
+			width: 100px;
+			height: 40px;
+			background: #ccc;
+		}
+	</style>
+</head>
+<body>
+<!-- 1.最外层大盒子 -->
+<div id="box">
+	<!-- 2.评论+文本域 -->
+	<div id="pinglun">
+		评论:<textarea id="txt"></textarea>
+	</div>	
+	<!-- 3.还可以输入多少个字 -->
+	<div id="shuzi">
+		<span id="overText">还可以输入</span><span id="sp">200</span>个字
+	</div>
+	<!-- 4.发布留言按钮 -->
+	<div id="fabu">
+		<input type="button" id="but" value="发布留言">
+	</div>
+	<!-- 5.显示区域 -->
+	<div id="xianshi">
+		<h3>显示留言</h3>
+		<ul id="uls">
+
+
+		</ul>
+	</div>
+</div>
+<script type="text/javascript">
+	//1.获取元素
+	//获取输入文本框
+	var txt = document.getElementById("txt")
+	//获取还可以输入span 
+	var overText = document.getElementById("overText");
+	//获取还可以输入数组span
+	var sp = document.getElementById("sp");
+	//发布按钮 
+	var but = document.getElementById("but");
+	//留言的ul
+	var uls = document.getElementById("uls");
+
+	//2.绑定事件
+	but.onclick = function(){
+		//2.1获取textarea中输入的内容 
+		var textValue = txt.value;
+		// console.log(textValue);
+		// console.log(typeof textValue);
+		//2.2判断textValue 这个值是否为空
+		if(textValue.length!=0){
+			//2.3内容不为空
+			//2.5判断输入的内容是否在范围内
+			if(textValue.length<=200){
+				//满足范围
+				// console.log(textValue);
+				//3.创建评论
+				//3.1创建li标签并加入到ul中
+				var uLi = document.createElement("li");
+				uls.appendChild(uLi);
+				//3.2判断ul中li的个数,当li个数大于0,以为li有了评论,新评论应该插入到当前评论 的前面
+				if(uls.children.length>0){
+					uls.insertBefore(uLi, uls.children[0]);
+				}
+			}else{
+				alert("超出范围");
+			}
+			//3.3创建评论p标签
+			var up = document.createElement("p");
+			up.innerHTML = textValue;
+			uLi.appendChild(up);
+			//3.4创建删除按钮 
+			var uInp = document.createElement("input");
+			uInp.type="button";
+			uInp.value = "删除";
+			uInp.id = "del";
+			uLi.appendChild(uInp);
+			//3.5删除按钮方法 
+			uInp.onclick = function(){
+				uls.removeChild(this.parentNode);
+			}
+		}else{
+			//2.4内容为空
+			alert("内容不能为空");
+		}
+	}
+
+
+	//输入内容时, 文字实时监控
+	//5.创建一个定时器
+	var timer = null;
+	//4.给txt输入框绑定事件 
+	txt.onfocus = function(){
+		//4.1造一个方法, 控制文字输入所对应数字 
+		function text(){
+			// console.log("111111");
+			//4.2输入文本的长度
+			var txtLen = txt.value.length;
+			//4.3总长度 
+			var len =200; 
+			//4.4还可以输入的文本
+			len = len - txtLen;
+			if(len<0){
+				//4.5 200个数已经输完了
+				sp.style.color = "red";
+				overText.innerHTML = "已超出";
+			}else{
+				//4.5 200个数字还没有输入完
+				sp.style.color = "black";
+				overText.innerHTML = "还可以输入";
+			}
+			//4.7创造方法,负数变为正数 
+			function abs(a){
+				return a>0?a:-a;
+			}
+			//4.6将剩余可输入的文字放入页面中
+			sp.innerHTML=abs(len);
+		}
+		//5.1设置定时器方法
+		timer = setInterval(text, 10);
+	}
+	//5.2当输入区域内没有光标时,清空定时器 
+	txt.onblur = function(){
+		clearInterval(timer);
+	}
+</script>
+</body>
+</html>

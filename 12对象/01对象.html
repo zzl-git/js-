@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	var goodsName = "【单/加绒可选 优质牛皮】【赠199元皮带】BULLS冬季专柜定制 手工休闲鞋 百搭休闲运动鞋新品 国际名品-黑色加绒款 38";
+	var goodsPrice = "169";
+	var goodsYuanPrice = "559.99";
+	var goodColor = ["黑色普通款","黑色加绒款","红色加绒款"];
+	var goodsSize = [38,39,40,41,42,43,44];
+
+	var str1 = "hello World";
+	var num = str1.length;//属性
+	var str = str1.toUpperCase();//方法
+	console.log(str1);
+	console.log(num);
+	console.log(str);
+	// var arr = new Array()
+	// var arr = [1,2,3,4];
+	//1.构造对象
+	var shangpin = new Object();
+	//2.对象中属性
+	//点语法(.)
+	shangpin.name = "手机";
+	shangpin.price = 999;
+	shangpin.yuanjia = 10999;
+	shangpin.color = ["yellow","red","black"];
+	shangpin.size = [5.0,6.5,7.2];
+	console.log(shangpin.name);
+	console.log(shangpin.price);
+	console.log(shangpin.yuanjia);
+	console.log(shangpin.color);
+	console.log(shangpin.size);
+	//对象中的属性个数不定;
+	//对象中的属性的数据类型也是不一样的
+	var girlFriend = {
+		name:"如花",
+		age: 46,
+		weight: 180,
+		height: 1.4,
+		sex: "man",
+		caili: 8888888,
+	}
+	console.log(girlFriend.age);
+	document.write("朱珍龙的女朋友:名字叫"+girlFriend.name+"年龄"+girlFriend.age+"岁,性别是"+girlFriend.sex);
+
+	//朱珍龙逆袭
+	//朱元璋 黄金 1亿吨
+	//找女朋友,多找几个 
+	//工厂方法,对象构造器 
+	
+	function GirlFriend(name,age,height,weight,sex,caili){
+		this.name = name;
+		this.age = age;
+		this.height = height;
+		this.weight = weight;
+		this.sex = sex;
+		this.caili = caili;
+	}
+
+	var girlFriendBJ = new GirlFriend("范冰冰",30,170,50,"woman",1000000);
+	var girlFriendSH = new GirlFriend("凤姐",40,160,150,"woman",100);
+	var girlFriendTW = new GirlFriend("林志玲",40,162,80,"woman",800000);
+	var girlFriendHK = new GirlFriend("吴君如",40,171,90,"woman",999999);
+
+	console.log(girlFriendHK.age);
+	console.log(girlFriendBJ.weight);
+</script>	
+</body>
+</html>

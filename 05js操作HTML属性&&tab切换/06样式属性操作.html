@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div class="div1">我是第一个div</div>
+<div>我是第二个div</div>
+<script type="text/javascript">
+	var dv = document.getElementsByTagName('div');
+	dv[0].style.width = "200px";
+	dv[0].style.height = "100px";
+	//css: margin-left: 50px;
+	//js : marginLeft (驼峰命名法)
+	dv[0].style.marginLeft ="20px";
+	dv[0].style.backgroundColor = "red";
+
+	dv[0].className = "abc";
+</script>
+</body>
+</html>

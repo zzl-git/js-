@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	//返回某个下标所对应的字符
+	var str1 = "abcdefg";
+	console.log(str1.charAt(2));//c 
+	console.log(str1.charAt(10));
+
+	//返回某个字符所对应的下标(索引)
+	var str2 = "hijklmn";
+	console.log(str2.search("m"));//5
+	console.log(str2.search('z'));//-1
+
+	//charCodeAt 根据下标找到字符返回这个字符所对应的unicode编码
+	var str3 = "opqrst";
+	console.log(str3.charCodeAt(2));//113
+	var str4 = "ewqasd";
+	console.log(str4.charCodeAt(2));//113
+	//根据unicode编码找到所对应的字符
+	console.log(String.fromCharCode(113));
+</script>	
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css" media="screen">
+		*{
+			margin:0;
+			padding: 0;
+			list-style: none;
+		}
+		 /*一.最外层盒子*/
+        .box{
+        	width: 490px;
+        	height: 170px;
+        	margin: 100px auto;
+        	border: 1px solid #ccc;
+        	padding: 5px;
+        }
+        .inner{
+        	width: 490px;
+        	height: 170px;
+        	background-color:pink;
+        	position: relative;
+        	overflow: hidden;
+        }
+         /*三.定位ul*/
+        .inner ul{
+        	width: 1000%; 
+        	position: absolute;
+        	left:0;
+        	top:0;
+        }
+        .inner ul li{
+        	float: left;
+        }
+        /*四.左右箭头*/
+        #arrow{
+        	display: none;
+        }
+        #arrow span{
+        	position: absolute;
+        	width: 40px;
+        	height: 40px;
+        	left:5px;
+        	top:50%;
+        	margin-top:-20px; 
+        	background: #000;
+        	cursor: pointer;
+        	line-height: 40px;
+        	text-align: center;
+        	font-weight: bold;
+        	font-size: 30px;
+        	color: #fff;
+        	opacity: 0.3;
+        	border: 1px solid #fff;
+        }
+        #arrow #right{
+        	right: 5px;
+        	left: auto;
+        }
+	</style>
+</head>
+<body>
+<div class="box" id="box">
+	<div class="inner">
+		<ul>
+			<li><a href="#"><img src="images/01.jpg"></a></li>
+			<li><a href="#"><img src="images/02.jpg"></a></li>
+			<li><a href="#"><img src="images/03.jpg"></a></li>
+			<li><a href="#"><img src="images/04.jpg"></a></li>
+			<li><a href="#"><img src="images/05.jpg"></a></li>
+		</ul>
+		<div id="arrow">
+			<span id="left">&lt;</span>
+			<span id="right">&gt;</span>
+		</div>
+	</div>
+</div>	
+<script type="text/javascript">
+	//1.获取元素
+	var box = document.getElementById("box");
+	var inner = box.children[0];//inner这个div
+	var ul = inner.children[0];//ul
+	var lis = ul.children;//5个图片
+	console.log(lis);
+	var arr = inner.children[1];//箭头的div 
+	var arrLeft = arr.children[0];//左箭头
+	var arrRight = arr.children[1];//右箭头
+
+	//2.鼠标滑动这个区域,出现箭头,滑出区域,箭头消失
+	box.onmousemove = function(){
+		arr.style.display = "block";
+	}
+	box.onmouseout = function(){
+		arr.style.display = "none";
+	}
+	var target = 0;//开始位置
+
+	//3.点击左箭头
+	arrLeft.onclick = function(){
+		//3.1点一次就加490
+		target+=490;
+		if (target>=0) {
+			target = 0;
+		}
+		animate(ul,target);
+	}
+	//4点击右边箭头
+	//target 0, -490 , -980, -1470, -1960
+	arrRight.onclick = function(){
+		//4.1点一次就减490,就往左移动一张图片的位置
+		target -=490;
+		//4.2进行判断范围 
+		//targte<=-1960
+		if(target<=-(lis.length-1)*490){
+			target = -(lis.length-1)*490;
+		}
+		animate(ul,target);
+	}
+
+// --------------------------------------------
+	function animate (obj,target){
+		clearInterval(obj.timer);
+			// ul.style.left = -this.index*scrollWidth+"px";
+			//从1-->5 left小
+			//从5-->1 left变大
+			//每次移动这个距离,张数*图片的宽度
+			//3.1目标位置
+			//3.2 速度正反
+			var speed = obj.offsetLeft < target ? 15 : -15;
+			obj.timer = setInterval(function(){
+				//3.3应该运动的距离
+				//   -1470 - 0 
+				//   1470  1456 1472
+				var result = target - obj.offsetLeft;
+				// 0  -15px
+				obj.style.left = obj.offsetLeft + speed + "px";
+				if(Math.abs(result)<=15){
+					obj.style.left = target + "px";
+					clearInterval(obj.timer);
+				}
+		},10);
+	}
+
+</script>
+</body>
+</html>

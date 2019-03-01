@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<form id="form">
+    <input type="text" id="txt"/>
+    <input type="button" value="" id="code"/>
+    <input type="button" value="提交" id="submit"/>
+</form>
+<script type="text/javascript">
+	function getId(id) {
+        return document.getElementById(id);
+    }
+    var txt=getId("txt");//输入框
+    var code=getId("code");//验证码
+    var submit=getId("submit");//提交按钮
+    var arr=new Array(0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');
+    			// 0	arr.length.-1
+
+    //1.构造一个方法, 生成验证码 
+    // var str ="";
+    function shengchengCode(){
+    	code.value = ""
+    	for (var i = 0; i <6 ; i++) {
+    		//随机生成的下标
+    		var index = Math.floor(Math.random()*arr.length);
+    		code.value += arr[index];
+    	}
+    }
+    shengchengCode();
+    code.onclick = shengchengCode;
+    //验证验证码正确或错误
+    submit.onclick = function(){
+    	//2.1 把按钮验证码转成小写
+    	var transCode = code.value.toLowerCase();
+    	console.log(transCode);
+    	//2.2 用户输入的文本转为小写
+    	var userCode = txt.value.toLowerCase();
+    	console.log(userCode);
+    	if(transCode==userCode){
+    		alert("正确")
+    	}else if(userCode.length==0){
+    		alert("用户输入为空")
+    	}else{
+    		alert("错误");
+    	}
+    	txt.value = "";
+    	shengchengCode();
+
+    }
+</script>
+</body>
+</html>

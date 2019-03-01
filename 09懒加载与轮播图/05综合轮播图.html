@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css" media="screen">
+		*{
+			margin:0;
+			padding: 0;
+			list-style: none;
+		}
+		 /*一.最外层盒子*/
+        .box{
+        	width: 490px;
+        	height: 170px;
+        	margin: 100px auto;
+        	border: 1px solid #ccc;
+        	padding: 5px;
+        }
+        .inner{
+        	width: 490px;
+        	height: 170px;
+        	background-color:pink;
+        	position: relative;
+        	overflow: hidden;
+        }
+         /*三.定位ul*/
+        .inner ul{
+        	width: 1000%; 
+        	position: absolute;
+        	left:0;
+        	top:0;
+        }
+        .inner ul li{
+        	float: left;
+        }
+        /*四.左右箭头*/
+        #arrow{
+        	display: none;
+        }
+        #arrow span{
+        	position: absolute;
+        	width: 40px;
+        	height: 40px;
+        	left:5px;
+        	top:50%;
+        	margin-top:-20px; 
+        	background: #000;
+        	cursor: pointer;
+        	line-height: 40px;
+        	text-align: center;
+        	font-weight: bold;
+        	font-size: 30px;
+        	color: #fff;
+        	opacity: 0.3;
+        	border: 1px solid #fff;
+        }
+        #arrow #right{
+        	right: 5px;
+        	left: auto;
+        }
+        /*一堆样式*/
+        /*控制指示器*/
+        .inner ol{
+        	position: absolute;
+        	right: 10px;
+        	bottom: 10px;
+        	line-height: 20px;
+        	text-align: center;
+        }
+        .inner ol li{
+        	float: left;
+        	width: 20px;
+        	height: 20px;
+        	background: #fff;
+        	border: 1px solid #ccc;
+        	margin-left: 10px;
+        	cursor: pointer;
+        }
+        .inner ol li.current{
+        	background: orange;
+        	color: white;
+        }
+	</style>
+</head>
+<body>
+<div class="box" id="box">
+	<div class="inner">
+		<!-- 图片 -->
+		<ul>
+			<li><a href="#"><img src="images/01.jpg"></a></li>
+			<li><a href="#"><img src="images/02.jpg"></a></li>
+			<li><a href="#"><img src="images/03.jpg"></a></li>
+			<li><a href="#"><img src="images/04.jpg"></a></li>
+			<li><a href="#"><img src="images/05.jpg"></a></li>
+		</ul>
+		<!-- 指示器 -->
+		<ol></ol>
+		<!-- 箭头 -->
+		<div id="arrow">
+			<span id="left">&lt;</span>
+			<span id="right">&gt;</span>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	//1.获取元素
+	var box = document.getElementById("box");
+	var inner = box.children[0];//inner这个div
+	var ul = inner.children[0];//ul
+	var lis = ul.children;//5个图片
+	
+	var arr = inner.children[2];//箭头的div 
+	var arrLeft = arr.children[0];//左箭头
+	var arrRight = arr.children[1];//右箭头
+
+	var ol = inner.children[1];//指示器ol
+	var firstLi = ul.children[0];//第一张图片
+	var scrollWidth = inner.offsetWidth;//可视区域的宽度
+
+	//2.1克隆元素 
+	var newLi = firstLi.cloneNode(true);
+	//2.2添加图片ul中 
+	//此时ul中有了6张图片, 123451
+	ul.appendChild(newLi);
+	//2.3动态创建ol中的li,指示器
+	//i 01234 5个
+	//innerHTML 12345
+	for(var i =0; i<lis.length-1;i++){
+		var lili = document.createElement("li");
+		lili.innerHTML = i+1;
+		ol.appendChild(lili);
+	}
+
+
+	//3.焦点指示器
+	var olLis = ol.children;//5个指示器
+	//3.1第一个指示器使用current的样式
+	olLis[0].className="current";
+	//3.2循环给5个指示器添加事件
+	for(var i=0;i<olLis.length; i++){
+		//3.3给每个li添加属性,就是索引号 
+		olLis[i].index = i;
+		//3.4给每个li添加事件
+		olLis[i].onmouseover=function(){
+			//3.5让所有的li都没有样式 
+			for(var j=0; j<olLis.length;j++){
+				olLis[j].className="";
+			}
+			//3.6鼠标放在谁上面,那个span就有current这个样式
+			this.className = "current";
+			// //index 0-4 *490  
+			// //0 490 980 1470 1960
+			//3.7运动方法
+			animate(ul,-this.index*scrollWidth);
+		}
+	}
+
+	//4.自动轮播
+	//自动轮播时,图片1-5, 指示器1-5
+	//4.1定义自动轮播 
+	var timer = null; //定时器 
+	var key = 0 ;//控制图片
+	var square = 0;//控制指示器
+
+	//4.2设置定时器 
+	timer = setInterval(autoPlay,1000);
+
+	//4.3自动播放方法 
+	function autoPlay(){
+		//4.4自动轮播时,方向往右,	图片1-5;图片索引增大,指示器索引增大
+		key++;
+		square++;
+		//4.5 图片索引 0 1 2 3 4
+		//真正的图片ul 0 1 2 3 4 5(0)
+		//               第五张图片--->第一张图片0
+		//                        5(0)   6(1)
+		if(key>5){
+			key=1;
+			ul.style.left = 0+"px";
+		}
+		//4.6让图片动起来 
+		animate(ul,-key*scrollWidth);
+
+		//4.7指示器的范围 
+		//01234 5
+		//		0 
+		//square>4
+		square = square>olLis.length-1? 0 : square;
+		//4.8指示器运动
+		for(var j=0; j<olLis.length;j++){
+				olLis[j].className="";
+			}
+			//4.9指示器下标 0--4
+			olLis[square].className = "current";
+	}
+
+	//5鼠标移动到这个区域中
+	box.onmouseover = function(){
+		arr.style.display = "block";
+		//5.1当鼠标移动到轮播图区域时,自动轮播停
+		clearInterval(timer);
+	}
+	box.onmouseout = function(){
+		arr.style.display = "none";
+		//5.2鼠标移出去,自动轮播就得开始 
+		timer = setInterval(autoPlay,1000);
+	}
+
+	//6.1右箭头
+	arrRight.onclick = function(){
+		//6.2右箭头点击,方向向左,图片索引增大,指示器的索引增大,借助自动轮播方法
+		autoPlay();
+	}
+
+	//6.3左箭头 
+	arrLeft.onclick = function(){
+		// 6.4图片往右,图片索引减小,指示器索引减小
+		key--;
+		square--;
+		if(key<0){
+			key=4;
+			ul.style.left = -5*scrollWidth+"px";
+		}
+		//6.5让图片动起来
+		animate(ul,-key*scrollWidth);
+		//6.6指示器范围
+		square = square<0? 4 : square;
+		//6.7指示器运动
+		for(var j=0; j<olLis.length;j++){
+				olLis[j].className="";
+			}
+			//4.9指示器下标 0--4
+			olLis[square].className = "current";
+	}
+
+
+// --------------------------------------------
+	function animate (obj,target){
+		clearInterval(obj.timer);
+			// ul.style.left = -this.index*scrollWidth+"px";
+			//从1-->5 left小
+			//从5-->1 left变大
+			//每次移动这个距离,张数*图片的宽度
+			//3.1目标位置
+			//3.2 速度正反
+			var speed = obj.offsetLeft < target ? 15 : -15;
+			obj.timer = setInterval(function(){
+				//3.3应该运动的距离
+				//   -1470 - 0 
+				//   1470  1456 1472
+				var result = target - obj.offsetLeft;
+				// 0  -15px
+				obj.style.left = obj.offsetLeft + speed + "px";
+				if(Math.abs(result)<=15){
+					obj.style.left = target + "px";
+					clearInterval(obj.timer);
+				}
+		},10);
+	}
+
+
+</script>	
+</body>
+</html>

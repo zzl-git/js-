@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<a href="http://www.baidu.com">百度</a>
+	<form method="get" action="http://www.baidu.com">
+		<input type="text">
+		<input type="submit" value="提交"> 
+	</form>
+<script type="text/javascript">
+	var a = document.getElementsByTagName("a")[0];
+	var form = document.getElementsByTagName("form")[0];
+	a.onclick = function (evt){
+		evt.preventDefault();
+	
+	}
+	form.onclick = function (evt){
+		var event = evt||window.event;
+		event.preventDefault();
+		event.returnValue = false;
+		console.log("aaaa");
+	}
+
+
+</script>
+</body>
+</html>

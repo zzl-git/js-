@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+//splice 
+//两个参数, 从数组中删除元素,第一参数数组的下标,第二参数删除元素个数
+var arrA = [1,3,5,7,9];
+console.log(arrA.splice(1,3));//3,5,7
+console.log(arrA);//1,7,9
+
+
+//三个参数,第三个参数及以后,添加进来的新元素 
+var arrB = [2,4,6,8];
+arrB.splice(1,2,10);
+console.log(arrB);
+
+var arrC = [2,4,6,8];
+arrC.splice(1,2,10,11,12,13);
+console.log(arrC);
+
+//第二个参数,长度写为0,没有删除,新添加元素
+var arrD = [2,3,4,5];
+arrD.splice(1,0,100);
+console.log(arrD);
+
+console.log("---------");
+
+//slice 取出元素 
+//两个参数,都是下标, 开始的下标取到,结束下标取不到
+var arrE = [4,5,6,7,8];
+console.log(arrE.slice(2,4));//6,7
+console.log(arrE);
+
+//concat 连接数组
+var arrF = [1,2,3,4];
+var arrG = [5,6,7,8];
+var  arrI = [11,12,13,14];
+var arrH = arrF.concat(arrG,arrI);
+console.log(arrH);
+console.log(arrF);
+
+//join 连接数组中的元素 
+var arrJ = [2018,12,10];
+var arrK = arrJ.join("-");
+console.log(arrK);
+console.log(arrJ);
+
+//reverse 数组倒置
+var arrL = [8,9,10,11];
+var arrM = arrL.reverse();
+console.log(arrM);
+console.log(arrL);
+
+
+console.log("-------------------------------------------------------------------------------------------------------------------------------------------");
+
+// sort 排序
+var arrN = [ 3,5,1,2,7];
+arrN.sort();
+console.log(arrN);
+
+var arrO = [11,21,5,2,7];
+// arrO.sort();
+// console.log(arrO);//11, 2, 21, 5, 7
+arrO.sort(function(a,b){return b-a;});
+console.log(arrO);
+//求一个数组中的最大值 
+
+</script>	
+</body>
+</html>

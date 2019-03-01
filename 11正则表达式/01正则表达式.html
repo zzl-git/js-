@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	var str1 = "abcdefg123";
+	//1.创建正则表达式
+	//regExp 
+	//规则:\d数字, i忽略大小写
+	var reg1 = new RegExp("\\d","i");
+
+	console.log(str1.match(reg1));//null
+
+	console.log("-----------------------------------------------");
+	//两个参数 
+	//第一个:正则 
+	//第二个:属性 i忽略大小写 m g 
+	//查找字符串是否含有"ab",忽略ab大小写
+	var reg2 = new RegExp("ab","i");
+	var str21 = "abcdefg";
+	var str22 = "CDEFGAB";
+	var str23 = "CDAbEFG";
+	var str24 = "xyz";
+	//match：返回所有正则表达式的匹配（数组)
+	//没有返回null
+	console.log(str21.match(reg2));//ab
+	console.log(str22.match(reg2));//AB
+	console.log(str23.match(reg2));//Ab
+	console.log(str24.match(reg2));//null
+	console.log("-----------------------------------------------");
+	//检索与正则表达式相匹配的值(没有返回-1) 
+	console.log(str21.search(reg2));//0
+	console.log(str22.search(reg2));//5
+	console.log(str23.search(reg2));//2
+	console.log(str24.search(reg2));//-1
+	console.log("-----------------------------------------------");
+	//：检索字符串中指定的值 返回 true 或 false 
+	console.log(reg2.test(str21));//true
+	console.log(reg2.test(str22));//true
+	console.log(reg2.test(str23));//true
+	console.log(reg2.test(str24));//false
+	console.log("-----------------------------------------------");
+	//检索字符串中指定的值 返回检索的值 
+	console.log(reg2.exec(str21));//0
+	console.log(reg2.exec(str22));//5
+	console.log(reg2.exec(str23));//2
+	console.log(reg2.exec(str24));//null
+	console.log("-----------------------------------------------");
+	var str3 = "Every man in the world!Every woman on earth";
+	var str4 = str3.replace(/man/g ,"person") ;
+	document.write(str4+"<br>");
+	var str5 = str3.replace(/(wo)?man/g,"person");
+	document.write(str5);
+
+</script>
+</body>
+</html>

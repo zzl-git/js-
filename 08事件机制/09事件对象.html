@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css" media="screen">
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: yellow;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		点
+	</div>
+	<script type="text/javascript">
+	var div = document.getElementsByTagName("div")[0];
+	//event参数列表, 包含event事件所有的内容
+	div.onclick = function (evt){
+		console.log(evt);
+		console.log(evt.target);//这个事件对象
+		console.log(this);//方法的所有者
+	}
+
+	// function abc(){
+	// 	console.log(this);
+	// }
+	// abc();
+
+	div.onclick = function(evt){
+		var target = evt.target;
+		console.log(target);
+		target.style.background = "red";
+	}
+
+function eventTarget(evt){
+	var event = evt||window.event; 
+	var targetElement = event.target||event.srcElement;
+	console.log(targetElement);
+}
+	</script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css" media="screen">
+		*{
+			margin:0;
+			padding: 0;
+		}
+		#box{
+			width: 600px;
+			height: 20px;
+			background-color: #ccc;
+			margin: 10px auto;
+			position: relative;
+		}
+		#tiao{
+			width: 100px;
+			height: 20px;
+			background-color: red;
+			position: absolute;
+			left: 0;
+			top:0;		
+		}
+		#jinduBox{
+			width: 400px;
+			height: 30px;
+			margin: 10px auto;
+			background:#ccc;
+			line-height: 30px;
+			text-align: center;
+			position: relative;
+		}
+		#jindu{
+			/*0-100%*/
+			width: 0%;
+			height: 30px;
+			background-color: green;
+			position: absolute;
+			left: 0;
+			top: 0;
+			overflow: hidden;
+		}
+		#jindu span{
+			width: 400px;
+			height: 30px;
+			display: block;
+			position: absolute;
+			left: 0;
+			top: 0;
+			color: #fff;
+
+		}
+	</style>
+</head>
+<body>
+<div id="box">
+	<div id="tiao"></div>
+</div>
+<div id="jinduBox">
+	<span>0%</span>
+	<div id="jindu">
+		<span>0%</span>
+	</div>
+</div>
+<script type="text/javascript">
+	 var box = document.getElementById("box");//盒子
+     var tiao = document.getElementById("tiao");//红色的条
+     var jinduBox = document.getElementById("jinduBox");
+     var jindu = document.getElementById("jindu");
+     var span1 = jinduBox.children[0];
+     var span2 = jindu.children[0];
+      tiao.onmousedown = function(ev){
+     	//距离
+     	//终点--起点 
+     	//鼠标点坐标  - 红色条offsetLeft
+     	//点在红色条的位置与区域外面长度
+     	var disX = ev.clientX - tiao.offsetLeft;
+     	//移动的事件
+     	document.onmousemove =function(evt){
+     		var l = evt.clientX - disX;
+     		//调用设置坐标的方法
+ 	  		 if (l<0) {
+	 			l =0;
+	 		}else if(l>box.offsetWidth-tiao.offsetWidth){
+		 			l=box.offsetWidth-tiao.offsetWidth;
+	 		}
+	 		tiao.style.left = l+"px"; 
+	 		var scale = l/(box.offsetWidth-tiao.offsetWidth);
+	 		console.log(scale);
+	 		jindu.style.width = parseInt(scale*100)+"%";
+	 		span1.innerHTML = parseInt(scale*100)+"%"; 
+	 		span2.innerHTML = parseInt(scale*100)+"%"; 
+     	}
+     	//最后一个地
+     	document.onmouseup=function(){
+     		document.onmousemove=null;
+     		document.onmouseup=null;
+     		
+     	}
+ 		
+ 		return false;
+     }
+
+  function setPos(l){
+     	if (l<0) {
+ 			l =0;
+ 		}else if(l>box.offsetWidth-tiao.offsetWidth){
+ 			l=box.offsetWidth-tiao.offsetWidth;
+ 		}
+ 		tiao.style.left = l+"px";
+     		// 红色条移动范围算出比例
+ 		var scale = l/(box.offsetWidth-tiao.offsetWidth);
+ 		text.style.top = -scale*(text.offsetHeight-textBox.offsetHeight)  +"px";
+
+     }
+</script>
+</body>
+</html>

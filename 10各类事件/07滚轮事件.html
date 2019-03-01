@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css" media="screen">
+		#box{
+			width: 600px;
+			height: 20px;
+			background-color: #ccc;
+			margin: 10px auto;
+			position: relative;
+		}
+		#tiao{
+			width: 100px;
+			height: 20px;
+			background-color: red;
+			position: absolute;
+			left: 0;
+			top:0;		
+		}
+		#textBox{
+			width: 300px;
+			height: 300px;
+			margin: 10px auto;
+			border: 1px solid black;
+			position: relative;
+			overflow: hidden;
+		}
+		#text{
+			position: absolute;
+			left: 0;
+			top:0;
+		}
+	</style>
+	<script type="text/javascript" src="mousewheel.js"></script>
+</head>
+<body>
+<div id="main">
+	<div id="box">
+		<div id="tiao"></div>
+	</div>
+	<div id="textBox">
+		<div id="text">
+			JavaScript脚本语言具有以下特点:
+(1)脚本语言。JavaScript是一种解释型的脚本语言,C、C++等语言先编译后执行,而JavaScript是在程序的运行过程中逐行进行解释。
+(2)基于对象。JavaScript是一种基于对象的脚本语言,它不仅可以创建对象,也能使用现有的对象。
+(3)简单。JavaScript语言中采用的是弱类型的变量类型,对使用的数据类型未做出严格的要求,是基于Java基本语句和控制的脚本语言,其设计简单紧凑。
+(4)动态性。JavaScript是一种采用事件驱动的脚本语言,它不需要经过Web服务器就可以对用户的输入做出响应。在访问一个网页时,鼠标在网页中进行鼠标点击或上下移、窗口移动等操作JavaScript都可直接对这些事件给出相应的响应。
+(5)跨平台性。JavaScript脚本语言不依赖于操作系统,仅需要浏览器的支持。因此一个JavaScript脚本在编写后可以带到任意机器上使用,前提上机器上的浏览器支 持JavaScript脚本语言,目前JavaScript已被大多数的浏览器所支持。[3] 
+不同于服务器端脚本语言，例如PHP与ASP，JavaScript主要被作为客户端脚本语言在用户的浏览器上运行，不需要服务器的支持。所以在早期程序员比较青睐于JavaScript以减少对服务器的负担，而与此同时也带来另一个问题：安全性。
+而随着服务器的强壮，虽然程序员更喜欢运行于服务端的脚本以保证安全，但JavaScript仍然以其跨平台、容易上手等优势大行其道。同时，有些特殊功能（如AJAX）必须依赖Javascript在客户端进行支持。随着引擎如V8和框架如Node.js的发展，及其事件驱动及异步IO等特性，JavaScript逐渐被用来编写服务器端程序。
+
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	 var box = document.getElementById("box");//盒子
+     var tiao = document.getElementById("tiao");//红色的条
+     var textBox= document.getElementById("textBox");//文字盒子
+     var text= document.getElementById("text");//文字
+
+     //2.红色条加事件 
+     //ev点击时候事件
+     tiao.onmousedown = function(ev){
+     	console.log("按上了");
+     	console.log(ev.clientX);
+     	//距离
+     	//终点--起点 
+     	//鼠标点坐标  - 红色条offsetLeft
+     	//点在红色条的位置与区域外面长度
+     	var disX = ev.clientX - tiao.offsetLeft;
+     	//移动的事件
+     	document.onmousemove =function(evt){
+     		var l = evt.clientX - disX;
+     		//调用设置坐标的方法
+ 	  		setPos(l);   		
+     	}
+     	//最后一个地
+     	document.onmouseup=function(){
+     		document.onmousemove=null;
+     		document.onmouseup=null;
+     		tiao.releaseCapture && tiao.releaseCapture();
+     	}
+ 		tiao.setCapture && tiao.setCapture();
+ 		//该函数在属于当前线程执行的窗口里设置鼠标捕获一旦窗口捕获了鼠标,所有的鼠标输入都针对该窗口,无论光标是否在窗口的边界内.
+ 		//同一时刻只有一个窗口捕获鼠标 
+ 		//如果鼠标光标在另一个线程创建的窗口上,只有当鼠标键按下时候,系统才将鼠标输入指向指定的窗口
+ 		return false;
+     }
+
+     var main = document.getElementById("main");
+     //添加滚轮事件
+     //滚轮方向 
+     //true 滚轮往下滚 
+     //false 滚轮往上滚 
+     addMouseWheel(main,function(down){
+     	var l = tiao.offsetLeft;
+     	if (down) {
+     		l+=10;
+     	}else{
+     		l-=10;
+     	}
+     	setPos(l);
+     });
+
+
+
+
+
+
+     function setPos(l){
+     	if (l<0) {
+ 			l =0;
+ 		}else if(l>box.offsetWidth-tiao.offsetWidth){
+ 			l=box.offsetWidth-tiao.offsetWidth;
+ 		}
+ 		tiao.style.left = l+"px";
+     		// 红色条移动范围算出比例
+ 		var scale = l/(box.offsetWidth-tiao.offsetWidth);
+ 		text.style.top = -scale*(text.offsetHeight-textBox.offsetHeight)  +"px";
+
+     }
+</script>
+</body>
+</html>

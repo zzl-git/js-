@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	// function abc(){
+	// 	console.log("111111");
+	// }
+	// var timer = setInterval(abc,100);
+	// clearInterval(timer)
+	//匿名函数 
+	// var timer1 = setInterval(function(
+	// 	console.log("22222");
+	// 	),200)
+	// clearInterval(timer1)
+
+	function abc(){
+		console.log("1111");
+	}
+	abc();
+	//匿名函数
+	// function(){
+	// 	console.log("22222");
+	// }
+	// 匿名函数执行
+	// 自执行函数
+	(function(){
+		console.log("22222");
+	}())
+
+	// function fun(){
+	//    console.log("m2"); 
+	//    fun();   
+	// }
+	// fun();
+
+	function digui(n){
+       if(n ==1 ){
+       	 return 1;
+       }
+       // n*((n-1)!)
+       return n*digui(n-1);
+	}
+	var jieguo = digui(5);
+	console.log(jieguo);
+	// 5! = 5*4!
+	// 4! =   4*3!
+	// 3! =     3*2!
+	// 2! =       2*1!
+	// 1! =         1
+</script>	
+</body>
+</html>

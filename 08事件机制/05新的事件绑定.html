@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css" media="screen">
+		#fu{
+			width: 100px;
+			height: 100px;
+			background-color: yellow;
+		}
+	</style>
+</head>
+<body>
+	<div id="fu">
+		点击
+	</div>
+<script type="text/javascript">
+	var div = document.getElementsByTagName("div");
+	//事件监听
+	//第一参数, 事件, 没有on
+	//第二个参数, 事件对应的方法
+	//第三个参数, false
+	div[0].addEventListener("click",eve1,false);
+	div[0].addEventListener("click",eve2,false);	
+	div[0].addEventListener("click",eve3,false);
+
+	// 内联式
+	div[0].addEventListener("click",function(){
+		console.log("输出一句");
+	},false);
+
+	// div[0].attachEvent("onclick",eve1);
+
+	//等同于上面方法
+	// div[0].onclick = function(){
+	// 	eve1();
+	// }
+	function eve1(){
+		console.log("我是新的事件监听");
+	}
+	function eve2(){
+		console.log("我是新的事件监听2222222");
+	}
+	function eve3(){
+		console.log("我是新的事件监听33333333");
+	}
+	function eve4(){
+		console.log("4444444444");
+	}
+	addEventHandler(div[0],"click",eve4);
+
+
+function addEventHandler(obj,eventName,handler){
+	if(document.attachEvent){
+		//IE
+		obj.attachEvent('on'+eventName,handler);
+	}else {
+		obj.addEventListener(eventName,handler,false);
+	}
+}
+</script>
+</body>
+</html>

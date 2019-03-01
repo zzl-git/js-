@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	//查
+	var body = document.getElementsByTagName("body")[0];
+	console.log(body);
+
+	var div1 = document.createElement("div");
+	var text1 = document.createTextNode("今天天气不错,出去晒太阳补钙");
+	body.appendChild(div1);
+	div1.appendChild(text1);
+
+	var clone1 = div1.cloneNode(true);
+	body.appendChild(clone1);
+
+	var div2 = document.createElement("div");
+	var p1 = document.createElement("p");
+	var span1 = document.createElement("span");
+	var text2 = document.createTextNode("1111111");
+	div2.appendChild(p1);
+	p1.appendChild(span1);
+	span1.appendChild(text2);
+	console.log(div2);
+	body.appendChild(div2);
+
+	var clone2 = div2.cloneNode(false);
+	body.appendChild(clone2);
+	console.log(body);
+</script>
+</body>
+</html>

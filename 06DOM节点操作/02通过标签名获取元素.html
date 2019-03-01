@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div>我是div1</div>
+	<div>我是div2</div>
+<script type="text/javascript">
+	var divs =  document.getElementsByTagName("div");
+	console.log(divs);
+	//封装通过标签名获取方法 
+	function getEle(ele){
+		return  document.getElementsByTagName(ele);
+	}
+	var div1 = getEle("div");
+	console.log(div1);
+
+
+
+
+</script>
+</body>
+</html>

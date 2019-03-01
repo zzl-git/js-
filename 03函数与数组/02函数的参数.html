@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+//声明函数
+//具有3个参数 x,y,z
+//形参: 定义函数时使用
+function add(x,y,z){
+	console.log(x+y+z);
+}	
+//调用函数 
+//实参: 调用函数时实际传递的参数 
+//实参替换形参,来运行
+//多个参数用逗号,隔开
+add(10,20,30);
+//定义参数时,形参不需要指定类型;调用的时候,实参的类型决定形参类型
+add("10","20","30");
+
+
+function cheng(i,j,k){
+	console.log(i*j*k);
+}
+cheng(5,6,2);
+//实参比形参多,多传入的实参不参与函数运行
+cheng(5,4,2,3);
+
+//声明函数
+function chu(a,b,c){
+	console.log(a/b/c);
+}
+
+//调用函数
+//实参比形参少 
+chu(200,10);//NaN
+
+
+</script>	
+</body>
+</html>

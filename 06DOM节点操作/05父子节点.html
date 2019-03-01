@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<ul id="ul">
+	<!-- 这是一个ul -->
+	<li>苹果</li>
+	<li>香蕉</li>
+	<li class="li1">1234</li>
+	<li>红色</li>
+	<li id="teshu">5678<span>span标签</span></li>
+	<li>蓝色</li>
+	<li>芒果</li>
+	<li>火龙果</li>
+</ul>
+<!-- 标签关系: 1)包含嵌套 父子   2)并列  兄弟 -->
+<script type="text/javascript">
+	var ul = document.getElementById("ul");
+	//获取ul中所有的子节点 
+	// HTML文档中所有的内容都是节点
+	// 整个文档是文档节点 
+	// 每个HTML元素是元素节点
+	// HTML元素中的文本是文本节点(回车也是文本节点)
+	// 每个HTML属性是属性节点
+	// 注释叫做注释节点
+	console.log(ul.childNodes);//11个
+
+	//获取ul中所有标签类型的子节点,元素节点
+	console.log(ul.children);
+
+	var li = document.getElementById("teshu");
+	console.log(li);
+	//父节点 
+	console.log(li.parentNode);
+	console.log("----------------------------------------------------------------------");
+	// nextSibling: 在IE9及现代浏览器获取的是下一个所有类型的兄弟节点
+	// 			在IE6-8获取的是下一个标签类型的兄弟节点
+	console.log(li.nextSibling);//#text
+	// nextElementSibling: 只有在IE9及现代浏览器中,获取下一个标签类型的兄弟节点
+	console.log(li.nextElementSibling);
+	console.log(li.previousElementSibling);
+
+	function next(obj){
+		if(obj.nextElementSibling){
+			//Ie9及现代浏览器 
+			return obj.nextElementSibling;
+		}else{
+			//IE678
+			return obj.nextSibling;
+		}
+	}
+
+	console.log(next(li));
+
+	function previous(obj){
+		if(obj.previousElementSibling){
+			//Ie9及现代浏览器 
+			return obj.previousElementSibling;
+		}else{
+			//IE678
+			return obj.previousSibling;
+		}
+	}
+	console.log(previous(li));
+	console.log("----------------------------------------------------------------------");
+	console.log(ul.firstChild);//#text
+	console.log(ul.firstElementChild);//苹果
+	console.log(ul.lastChild);//#text
+	console.log(ul.lastElementChild);//火龙果
+	console.log("----------------------------------------------------------------------");
+
+	function firstC(obj){
+		if(obj.firstElementChild){
+			//Ie9及现代浏览器 
+			return obj.firstElementChild;
+		}else{
+			//IE678
+			return obj.firstChild;
+		}
+	}
+	function lastC(obj){
+		if(obj.lastElementChild){
+			//Ie9及现代浏览器 
+			return obj.lastElementChild;
+		}else{
+			//IE678
+			return obj.lastChild;
+		}
+	}
+	console.log(firstC(ul));
+	console.log(lastC(ul));
+</script>
+</body>
+</html>

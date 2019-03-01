@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body style="height:2000px;">
+	<div>
+		我是div
+		<p>
+			我是p标签
+		</p>
+	</div>	
+<script type="text/javascript">
+	var body = document.getElementsByTagName("body")[0];
+	var div = document.getElementsByTagName("div")[0];
+	var p = document.getElementsByTagName("p")[0];
+	body.addEventListener("click",function(){
+		console.log("我是body");
+	},false);
+
+	div.addEventListener("click",function(){
+		console.log("我是div");
+	},false);
+
+	p.addEventListener("click",function(){
+		console.log("我是p标签");
+	},false);
+
+
+</script>
+</body>
+</html>

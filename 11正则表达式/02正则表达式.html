@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+	var str21 = "\n";
+	var str22 = "CDEFGAB";
+	var str23 = "CDAbEFG";
+	var str24 = "xyz";
+	//正则表达式
+	///正则表达式/属性(i,g,m)
+	var reg = /AB/i;
+	console.log(reg.test(str21));
+	console.log(reg.test(str22));
+	console.log(reg.test(str23));
+	console.log(reg.test(str24));
+
+	console.log("--------------------------------------------------------");
+
+	//\w 单词字符(字母数字下划线)
+	//\W 非单词字符
+	var reg1 = /\W/;
+	console.log(reg1.test(str21));//true
+	console.log(reg1.test(str22));//true
+	console.log(reg1.test(str23));//true
+	console.log(reg1.test(str24));//true
+
+	console.log("--------------------------------------------------------");
+
+	//\d 数字
+	//\D 非数字
+	var reg2 = /\D/;
+	console.log(reg2.test(str21));//true
+	console.log(reg2.test(str22));//true
+	console.log(reg2.test(str23));//true
+	console.log(reg2.test(str24));//true
+	console.log("--------------------------------------------------------");
+
+	//\s 空白字符
+	//\S 非空白字符
+	var reg3 = /\S/;
+	console.log(reg3.test(str21));//true
+	console.log(reg3.test(str22));//true
+	console.log(reg3.test(str23));//true
+	console.log(reg3.test(str24));//true
+
+	console.log("--------------------------------------------------------");
+
+	//\.  除了换行与结束任意的字符
+	var reg4 = /./;
+	console.log(reg4.test(str21));//true
+	console.log(reg4.test(str22));//true
+	console.log(reg4.test(str23));//true
+	console.log(reg4.test(str24));//true
+
+	console.log("--------------------------------------------------------");
+
+	//\b  边界
+	//\bC  前面边界为C
+	//C\b  后面边界为C
+	var reg5 = /C\b/;
+	console.log(reg5.test(str21));//f
+	console.log(reg5.test(str22));//tr
+	console.log(reg5.test(str23));//t
+	console.log(reg5.test(str24));//f
+
+	console.log("--------------------------------------------------------");
+	var reg6 =/\W\b\w/;
+	// \W\b \b\w 
+	console.log(reg6.test("abc"));
+	console.log(reg6.test("abc!"));
+
+	var reg7 = /\ba,a\b/;
+	console.log(reg7.test("a"));//false
+	console.log(reg7.test("abc"));//false
+	console.log(reg7.test("aba"));//false
+	console.log(reg7.test("bca"));//false
+
+
+	</script>	
+</body>
+</html>

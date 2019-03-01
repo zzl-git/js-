@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+window.onload = function(){
+
+
+	var d1 = document.getElementById("dv");
+	console.log(d1);//null
+	// onclick 单击
+	// ondblclick 双击
+	d1.ondblclick = function(){
+		console.log("我是双击事件");
+	}
+	var d2 = document.getElementsByTagName("span")[0];
+	d2.onmousedown =function(){
+		console.log("鼠标按下");
+	}
+	d2.onmouseup = function(){
+		console.log("鼠标松开");
+	}
+	d2.onmousemove = function(){
+		console.log("鼠标移动");
+	}
+	d2.onmouseover = function(){
+		console.log("鼠标移入");
+	}
+	d2.onmouseout = function(){
+		console.log("鼠标移出");
+	}
+
+	var inps = document.getElementsByTagName('input');
+	inps[0].onfocus = function(){
+		console.log("获取焦点");
+	}
+	inps[0].onblur = function(){
+		console.log("失去焦点");
+	}
+	inps[0].onchange = function(){
+		console.log("改变了");
+	}
+	inps[0].oninput = function(){
+		console.log("不停的改变");
+	}
+
+
+	document.onkeydown = function(){
+		console.log("按下键盘")
+	}
+	document.onkeyup = function(){
+		console.log("松开键盘");
+	}
+
+}
+
+
+
+
+
+
+</script>	
+<div id="dv">你好</div>
+<span>我是某某班学生</span>
+<p class="dvp">你是谁</p>
+<input type="text"/>
+
+</body>
+</html>

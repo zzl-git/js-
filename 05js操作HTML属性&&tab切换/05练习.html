@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<input type="text" id="inp">
+<input type="button" id="btn" value="点击按钮">
+<br>
+<div>点击上面按钮,添加内容</div>	
+<script type="text/javascript">
+	//1. 获取元素 
+	var inp1 = document.getElementById('inp');
+	var btn1 = document.getElementById('btn');
+	var div = document.getElementsByTagName('div')[0];
+
+	//2. 给按钮绑定事件 
+	//   谁执行这个事件,事件就绑定给谁 
+	btn1.onclick = function(){
+	//3. 事件所对应的方法 	
+	
+		div.innerHTML = inp1.value;
+	}
+
+</script>
+</body>
+</html>

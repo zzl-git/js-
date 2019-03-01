@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css" media="screen">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		/*1.大盒子*/
+		.box{
+			width: 490px;
+			height: 170px;
+			margin: 100px auto;
+			border: 1px solid #000;
+			position: relative;/*相对定位*/
+		}
+		/*2.a标签*/
+		/*a标签是行内元素,没有宽高,只是先放上*/
+		a{
+			width: 490px;
+			height: 170px;
+		}
+		/*给每个a标签都加了背景图*/
+		#a1{
+			background-image: url('images/01.jpg') ;
+		}
+		#a2{
+			background-image: url(images/02.jpg) ;
+		} 	
+		#a3{
+			background-image: url(images/03.jpg);
+		}
+	 	#a4{
+			background-image: url(images/04.jpg);
+		}
+		/*3.指示器*/
+		ul{
+			list-style: none;
+			position: absolute;
+			bottom: 10px;
+			left: 50%;
+			margin-left: -40px;
+		}
+		li{
+			width: 16px;
+			height: 16px;
+			background-color: #000;
+			border-radius: 50%;
+			margin:2px;
+			float: left;
+			color: #fff;
+			text-align: center;
+			line-height: 16px;
+			cursor: pointer;
+		}
+		/*4.箭头*/
+		span{
+			position: absolute;
+			top:50%;
+			margin-top:-50px;
+			width: 40px;
+			height: 100px;
+			background:rgba(0,0,0,0.3);
+			text-align: center;
+			line-height: 100px;
+		}
+		.right{
+			right: 0;
+		}
+		/*5.show与current*/
+		.show{
+			display: block;
+		}
+		.current{
+			background:green;
+		}
+	</style>
+</head>
+<body>
+	<!-- 一.大盒子,装所有内容 -->
+	<div class="box">
+		<!-- 二.a标签用来放图片 -->
+		<!-- 加id属性为了处理背景图 -->
+		<a class="show" id="a1" href="#" ></a>
+		<a id="a2" href="#"></a>
+		<a id="a3" href="#"></a>
+		<a id="a4" href="#"></a>
+		<!-- 三.指示器 -->
+		<ul>
+			<li class="current">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+		<!-- 四.左右按钮 -->
+		<span>&lt;</span>
+		<span class="right">&gt;</span>
+	</div>
+<script type="text/javascript">
+	//1.获取元素 
+	var box = document.getElementsByTagName("div")[0];//大盒子
+	var aArr = document.getElementsByTagName("a");//所有的a标签
+	var liArr = document.getElementsByTagName("li");//所有的指示器
+	var spanArr = document.getElementsByTagName("span");//左右按钮
+	var timer = null;//定时器 
+	var num = 0;//控制下标
+
+	//9自动轮播 
+	timer = setInterval(rightFn,1000);
+
+	//10.当鼠标滑入到轮播图时,自动停,滑走,继续
+	box.onmouseover=function(){
+		clearInterval(timer);
+	}
+	box.onmouseout=function(){
+		timer = setInterval(rightFn,1000);
+	}
+
+
+	//2.大思路
+	// a容器  0 1 2 3 0 1 2 3
+	// li容器 0 1 2 3 0 1 2 3 
+	// 往右   0-->3 增大 
+	// 往左   3-->0 减小
+	// num控制a数组与li数组的下标,保证图片与指示器同步
+
+	//4.往右按钮事件
+	spanArr[1].onclick = function(){
+		rightFn();
+	}
+
+	//6.往左的按钮事件 
+	spanArr[0].onclick = function(){
+		leftFn();
+	}
+
+	//8.指示器的事件
+	for(var i = 0; i<liArr.length;i++){
+		liArr[i].onclick = moveFn;
+	}
+
+	
+
+
+
+	//3.实现方法
+	function rightFn(){
+		//3.3往右 num增加 
+		num++;
+		//3.4底线 
+		if (num>aArr.length-1) {
+			num=0;
+		}
+		// 3.1取消所有a的类与li的类
+		for(var i=0; i<aArr.length;i++){
+			aArr[i].className = "";
+			liArr[i].className = "";
+		}
+		//3.2当前的num下标的a与li具有样式
+		aArr[num].className = "show";
+		liArr[num].className = "current";
+		
+	}
+
+	//5.向左方法
+	function leftFn(){
+		//5.3往左 num减小
+		num--;
+		//5.4底线 
+		if (num<0) {
+			num=aArr.length-1;
+		}
+		// 5.1取消所有a的类与li的类
+		for(var i=0; i<aArr.length;i++){
+			aArr[i].className = "";
+			liArr[i].className = "";
+		}
+		//5.2当前的num下标的a与li具有样式
+		aArr[num].className = "show";
+		liArr[num].className = "current";
+		
+	}
+	//7.点指示器指示器样式跟上,图片显示
+	// 指示器与图片 num 0 1 2 3 
+	// 指示器文字       1 2 3 4
+	function moveFn(){
+		//7.3点的指示器的文字与num保持同步
+		num = this.innerHTML-1;
+		// 7.1取消所有a的类与li的类
+		for(var i=0; i<aArr.length;i++){
+			aArr[i].className = "";
+			liArr[i].className = "";
+		}
+		//7.2当前的num下标的a与li具有样式
+		aArr[num].className = "show";
+		liArr[num].className = "current";	
+	}
+</script>
+</body>
+</html>

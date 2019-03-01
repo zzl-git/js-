@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div>我是div</div>
+	<div class="mydiv">我是一个特殊的<span>div</span></div>
+	<div id="teshu">
+		我是div的内容
+		<p>我是p标签的内容</p>
+	</div>
+	<input type="text"  value="我是value的值">
+<script type="text/javascript">
+	var dv = document.getElementsByTagName("div");
+	console.log(dv[0]);
+	// innerHTML 标签中的内容
+	console.log(dv[0].innerHTML);
+
+	var mydiv = document.getElementsByClassName("mydiv");
+	console.log(mydiv[0]);
+	console.log(mydiv[0].innerHTML);
+
+	var divid = document.getElementById('teshu');
+	console.log(divid);
+	console.log(divid.innerHTML);
+	//outerHTML 标签+标签中的内容(文本)
+	console.log(divid.outerHTML);
+
+	//innerText 标签内的文本,忽略标签
+	console.log(divid.innerText);
+	//textContent  IE678不支持这个方法
+	console.log(divid.textContent);
+
+	var inp = document.getElementsByTagName("input");
+	console.log(inp[0]);
+	console.log(inp[0].value);
+</script>
+</body>
+</html>

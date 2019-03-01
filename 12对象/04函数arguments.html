@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	function add(x,y){
+		console.log(arguments);
+		console.log(arguments.length);
+		console.log(arguments[0]);
+		console.log(arguments[1]);
+		return x+y;
+	}
+	// document.getElementById("abc").onclick = function(ev){
+
+	// }
+	var sum = add(10,20);
+	console.log(sum);
+
+	function a(){
+		console.log(a.caller);
+	}
+	// a();//null 自己直接调用返回null
+	function b(){
+		a();
+	}
+	b();//b函数调用了a函数,a.caller就是b
+
+
+	function c(){
+		console.log(arguments.callee);
+	}
+	function d(){
+		c();
+	}
+	d();
+</script>
+</body>
+</html>

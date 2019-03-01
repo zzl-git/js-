@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+var  a  = 10 ;//变量声明与赋值
+console.log(a);	//变量使用
+//声明函数
+//函数名起名与变量一致
+//第一个字符 字母下划线$, 第二字符字母数字下划线$,不能有空格,不能使用关键字与保留字 
+function hello(){
+	console.log("hello");
+	console.log("my name is lilei");
+	console.log("I am 12");
+}
+//调用函数 
+hello();
+hello();
+hello();
+
+//先调用再声明
+hi();
+//定义
+function hi(){
+	console.log("hi");
+	console.log("你好");
+}
+
+console.log("---------------");
+console.log("---------------");
+
+// 只能先声明,后调用
+//声明一个函数
+var abc = function(){
+	console.log("1");
+	console.log("2");
+	console.log("3");
+}
+//调用函数 
+abc();
+
+//调用
+xyz();
+//声明
+var xyz = function(){
+	console.log("A");
+	console.log("B");
+	console.log("C");
+}
+</script>	
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="div1">我是div1</div>
+<script type="text/javascript">
+	//通过id获取元素 
+	var div1 = document.getElementById('div1');
+	console.log(div1);
+	//封装出一个方法,简单的就可以了
+	function getId(id){
+		return  document.getElementById(id);
+	}
+	var divv = getId('div1');
+	console.log(divv);
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+var x = 1000;	
+function test(x,y){
+	console.log(x+y);
+}
+test(10,20);
+console.log(x);
+//实参和形参是一一对应的
+//形参只在函数里面起作用 
+function test1(x,y){
+
+}
+console.log("-------------");
+var abc = 100;//外部变量
+function inner(){
+	var abc = 2000;//内部变量
+	console.log("里面"+abc);//2000
+}
+inner();
+console.log("外面"+abc);//200
+
+console.log("-------------");
+var xyz = 30000;
+function limian(){
+	console.log(xyz);//30000
+}
+limian();
+console.log(xyz);//30000
+console.log("----------------");
+
+function fangfa(){
+	var num = 56;//内部变量
+	// num = 70;全局变量
+	console.log(num);
+}
+fangfa();
+console.log("外面"+num);
+</script>	
+</body>
+</html>

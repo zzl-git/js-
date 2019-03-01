@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+
+	//双色球 33个球, 1-33. 
+	//1.生成随机数 
+	function rnd(max,min){
+		return Math.floor(Math.random()*(max-min+1)+min);
+	}
+	//生成随机数 
+	var suijishu = rnd(33,1);
+	console.log(suijishu);
+	//1-9变成 01-09
+	//2.补0 
+	function fillZero(n){
+		if (n<10) {
+			return '0'+n;
+		}else{
+			return ''+n;
+		}
+	}
+	//3.查看n是否在arr这个数组中
+	function findInArr (n,arr){
+		for (var i = 0; i <arr.length; i++) {
+			if (arr[i]==n) {
+				return true;
+			}
+		}
+		return false;
+	}
+	// var arr = [1,2,3,4,5,6,7];
+	// var a = findInArr(10,arr);
+	// console.log(a);
+	
+	//4.arr数组用来记录选出来的球
+	var arr = [];
+	//5.arr抽出来的球<6 
+	while(arr.length<6){
+		//5.1 抽出 01-09-10-33
+		var redball = fillZero(rnd(33,1));
+		//5.2 抽出来这个球和arr数组里面的数组是否重复,不重复,把抽出来这个球放进这个arr
+		//redball与arr重复 
+		//findInArr true 
+		//!findInArr  flase
+		if (!findInArr(redball,arr)) {
+			arr.push(redball);
+		}
+	}
+
+
+
+
+	document.write(arr);
+</script>	
+</body>
+</html>
